@@ -1,29 +1,45 @@
 <?php
-include_once("../config/config.php");
-include_once("../model/SignupModel.php");
+require_once("../config/config.php");
+require_once("../model/SignupModel.php");
+require_once("../model/LoginModel.php");
 
 if (
     isset(
-        $_POST['pseudo'],
+        $_POST['pseudo'], //Lory
         $_POST['email'],
         $_POST['password'],
         $_POST['comfirm_password'],
         $_POST['user_type'],
         $_POST['accepted']
-    )
-) {
-    $isValid = checkSignUp(
-        $_POST['pseudo'],
-        $_POST['email'],
+        )
+        ) {
+            $isValid = checkSignUp(
+                $_POST['pseudo'],
+                $_POST['email'],
         $_POST['password'],
         $_POST['comfirm_password'],
         $_POST['user_type'],
         $_POST['accepted']
     );
-
-    if (!$isValid['exist']) {
+    
+    if ($isValid['exist']) {
         header("Location:". $domaine ."/vues/account/signup.php");
     }
     
-    header("Location:". $domaine ."/successfly.html");
+    header("Location:". $domaine ."/vues/account/successfully.php");
+}
+
+
+if (isset( $_POST['email'], $_POST['password'])) {
+    $isValid = checkLogin(
+        $_POST['email'],
+        $_POST['password']
+    );
+
+    if (!$isValid['exist']) {
+        header("Location:" . $domaine . "/index.php");
+        return;
+    }
+
+    header("Location:" . $domaine . "/vues/account/login.php?error=". $isValid['message']);
 }

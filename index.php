@@ -26,11 +26,11 @@
             </h1>
 
           <nav id="nav">
-              <a href="/vues/articles/articles.php">Articles</a>
-              <a href="/vues/articles/add.php">Ajouter un article</a>
+              <!-- <a href="/vues/articles/articles.php">Articles</a>
+              <a href="/vues/articles/add.php">Ajouter un article</a> -->
               <a href="/vues/account/signup.php">Inscription</a>
-              <a href="/vues/account/login.php">Connexion</a>
-              <a href="/vues/account/logout.php">Déconnexion</a>
+              <!-- <a href="/vues/account/login.php">Connexion</a>
+              <a href="/vues/account/logout.php">Déconnexion</a> -->
           </nav>
       </header>
       

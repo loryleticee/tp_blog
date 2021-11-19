@@ -1,3 +1,3 @@
 <?php
 
-$domaine = "http://localhost:8086";
+$domaine = "http://localhost";

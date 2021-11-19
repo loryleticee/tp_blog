@@ -1,45 +1,11 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, , maximum-scale=1"
-    />
-    <meta name="description" content="Le blog des titans" />
-    <meta
-      name="keywords"
-      content="blog, titans, héros, discution, jeux, génie"
-    />
-    <meta name="author" content="Lory LÉTICÉE" />
-    <link rel="stylesheet" href="../../assets/style/main.css" />
-    <link rel="stylesheet" href="../../assets/style/burger-menu.css" />
-
-    <title>Accueil - Blog</title>
+    <?php include_once('../templates/head.php'); ?>
   </head>
 
   <body>
-    <header>
-      <h1 id="title">Blog des titans</h1>
-      <nav id="nav">
-        <a href="/vues/articles/articles.html">Articles</a>
-        <div class="dropdown">
-          <a href="/vues/articles/categories.html">Catégories</a>
-          <div class="dropdown-content">
-            <a href="/vues/articles/categories.html">Héros</a>
-            <a href="/vues/articles/categories.html">Légendes</a>
-            <a href="/vues/articles/categories.html">Monstre</a>
-          </div>
-        </div>
-
-        <a href="/vues/articles/add.html">Ajouter un article</a>
-        <a href="/vues/account/signup.html">Inscription</a>
-        <a href="/vues/account/login.html">Connexion</a>
-        <a href="/vues/account/logout.html">Déconnexion</a>
-      </nav>
-    </header>
-
+    <?php include_once('../templates/header.php'); ?>
     <main id="main">
       <form action="../../controller/AccountController.php" method="POST" id="form-control">
         <div>
@@ -93,9 +59,5 @@
     </main>
   </body>
 
-  <footer id="footer">
-    <div>
-      <span><small>&#169; 2021 Lory LÉTICÉE</small></span>
-    </div>
-  </footer>
+  <?php include_once('../templates/footer.php'); ?>
 </html>
