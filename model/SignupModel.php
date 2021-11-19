@@ -1,13 +1,6 @@
 <?php
 require_once("../config/mysql.php");
-
-if (!isset($_SERVER["HTTP_REFERER"])) {
-    die("access restricted");
-}
-
-if(! $_SERVER["HTTP_REFERER"] === "AccountController.php") {
-    die("access restricted");
-}
+require_once("../config/config.php");
 
 $error = [
     "message" => "",
@@ -41,7 +34,7 @@ function checkSignUp($pseudo, $email, $password, $comfirm_password, $user_type, 
 
         return $error;
     }
-
+    var_dump($password);exit();
     $password = passwordHash($password);
 
     addUser($pseudo, $email, $password, $user_type, $accepted);

@@ -16,12 +16,12 @@
           <label for="password">Mot de passe : </label>
           <input type="password" name="password" id="password" required />
         </div>
-       <div>
-         <small><?php  if( isset($_GET['error'])) { echo $_GET['error'];  } ?></small>
-       </div>
         <div id="login_button">
           <input type="submit" value="Se connecter" />
         </div>
+        <span>
+          <small id="error"><?php  if( isset($_GET['error'])) { echo $_GET['error'];  } ?></small>
+        </span>
       </form>
     </main>
 </body>

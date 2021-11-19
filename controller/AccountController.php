@@ -11,26 +11,30 @@ if (
         $_POST['comfirm_password'],
         $_POST['user_type'],
         $_POST['accepted']
-        )
-        ) {
-            $isValid = checkSignUp(
-                $_POST['pseudo'],
-                $_POST['email'],
+    )
+) {
+    $isValid = checkSignUp(
+        $_POST['pseudo'],
+        $_POST['email'],
         $_POST['password'],
         $_POST['comfirm_password'],
         $_POST['user_type'],
         $_POST['accepted']
     );
-    
+    var_dump($isValid);
+    die();
+
     if ($isValid['exist']) {
-        header("Location:". $domaine ."/vues/account/signup.php");
+        header("Location:" . $domaine . "/vues/account/signup.php");
+        return;
     }
-    
-    header("Location:". $domaine ."/vues/account/successfully.php");
+
+    header("Location:" . $domaine . "/vues/account/successfully.php");
+    return;
 }
 
 
-if (isset( $_POST['email'], $_POST['password'])) {
+if (isset($_POST['email'], $_POST['password'])) {
     $isValid = checkLogin(
         $_POST['email'],
         $_POST['password']
@@ -41,5 +45,6 @@ if (isset( $_POST['email'], $_POST['password'])) {
         return;
     }
 
-    header("Location:" . $domaine . "/vues/account/login.php?error=". $isValid['message']);
+    header("Location:" . $domaine . "/vues/account/login.php?error=" . $isValid['message']);
+    return;
 }

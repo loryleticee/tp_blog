@@ -1,13 +1,6 @@
 <?php
 require_once("../config/mysql.php");
-
-if (!isset($_SERVER["HTTP_REFERER"])) {
-    die("access restricted");
-}
-
-if(! $_SERVER["HTTP_REFERER"] === "AccountController.php") {
-    die("access restricted");
-}
+require_once("../config/config.php");
 
 $error = [
     "message" => "",
@@ -37,4 +30,51 @@ function checkLogin($email, $password)
     getPasswordUser($email, $password);
 
     return $error;
+}
+
+function getPasswordUser($email, $password)
+{
+    global $connexion;
+    global $error;
+
+    $query = $connexion->prepare("SELECT `password`, `pseudo`  FROM `user` WHERE email=:email;");
+    $response = $query->execute(["email" => $email]);
+    if (!$response) {
+        $error["message"] .= "Une erreur s'est produite durant la recherche du mot de passe";
+        $error["exist"] = true;
+        return $error;
+    }
+
+    $aDatas = $query->fetchAll();
+
+    verifyPassword($aDatas, $password);
+
+    return $error;
+}
+
+function verifyPassword($aDatas, $password) {
+    global $error;
+    $aDatas = $aDatas[0];
+
+    if(!isset($aDatas['password'])) {
+        $error["message"] .= "L’adresse e-mail que vous avez saisie n’est pas associée à un compte. <a href='/vues/account/signup.php'>Céer votre compte</a>";
+        $error["exist"] = true;
+
+        return $error;
+    }
+    
+    $passwordVerified = password_verify($password, $aDatas['password']);
+
+    if (!$passwordVerified) {
+        $error["message"] .= "Mot de passe incorrect.";
+        $error["exist"] = true;
+
+        return $error;
+    }
+
+    createSession($aDatas);
+}
+
+function createSession($aDatas) {
+    $_SESSION['user']['pseudo'] = $aDatas['pseudo'];
 }

@@ -1,81 +1,85 @@
 html {
-  background-color: #ccdad1;
-  font-family: "Avenir Next", "Avenir", sans-serif;
+    background-color: #ccdad1;
+    font-family: "Avenir Next", "Avenir", sans-serif;
 }
 
 .button_bleu:hover {
-  background-color: blue ;
+    background-color: blue;
 }
 
 #form-control {
-  padding: 2rem;
-  background-color: #9caea9;
-}
-.dropdown{
-  display: none;
+    padding: 2rem;
+    background-color: #9caea9;
 }
 
-tr:nth-child(3) > td:nth-child(2) {
-  background-color: blue;
+.dropdown {
+    display: none;
+}
+
+tr:nth-child(3)>td:nth-child(2) {
+    background-color: blue;
 }
 
 #deuxieme {
-  background-color: red;
+    background-color: red;
 }
 
 #form-control label {
-  text-align: right;
-  clear: both;
-  float: left;
+    text-align: right;
+    clear: both;
+    float: left;
 }
 
-#form-control input, select {
-  text-align: right;
-  float: right;
+#form-control input,
+select {
+    text-align: right;
+    float: right;
 }
 
 #signup_button {
-  text-align: left;
-  float: left;
-  clear: both;
-  margin-top: 1rem;
+    text-align: left;
+    float: left;
+    clear: both;
+    margin-top: 1rem;
 }
 
 #main-home {
-  display: flex;
-  justify-content: center;
-  flex: 1 1;
-  -ms-flex: 1;
-  height: 100vh;
-  background-color: #6f6866;
-  background: url("../images/knight-6489579_1920.jpg");
-  background-size: cover;
+    display: flex;
+    justify-content: center;
+    flex: 1 1;
+    -ms-flex: 1;
+    height: 100vh;
+    background-color: #6f6866;
+    background: url("../images/knight-6489579_1920.jpg");
+    background-size: cover;
 }
+
 #main {
-  display: flex;
-  justify-content: center;
-  flex: 1 1;
-  -ms-flex: 1;
-  height: 100vh;
-  background-color: #6f6866;
+    display: flex;
+    justify-content: center;
+    flex: 1 1;
+    -ms-flex: 1;
+    height: 100vh;
+    background-color: #6f6866;
 }
 
 header {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
 #nav {
-  width: 50%;
-  display: flex;
-  
-  justify-content: space-evenly;
+    width: 50%;
+    display: flex;
+    justify-content: space-evenly;
 }
+
 #nav a {
-  color: #6f6866;
-  text-decoration: none;
+    color: #6f6866;
+    text-decoration: none;
 }
+
 
 /* #nav a:hover {
   color: #788585;
@@ -83,35 +87,40 @@ header {
 
 #nav ul,
 li {
-  list-style: none;
+    list-style: none;
 }
 
 #title {
-  text-transform: uppercase;
-  color: #38302e;
+    text-transform: uppercase;
+    color: #38302e;
 }
 
 #footer {
-  display: flex;
-  justify-content: center;
-  padding: 2rem;
-  background-color: #38302e;
-  color: #ffffff;
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+    background-color: #38302e;
+    color: #ffffff;
 }
 
 #nav-burger {
-  display: none;
+    display: none;
 }
 
-@media screen and (max-width: 375px){
-  #nav {
-    display: none;
-  }
-  .my_array {
-    height: 75px;
-  }
-  #nav-burger {
-    display: block;
-    width: 100%;
-  }
+#error {
+    color: red;
+    float: left;
+}
+
+@media screen and (max-width: 375px) {
+    #nav {
+        display: none;
+    }
+    .my_array {
+        height: 75px;
+    }
+    #nav-burger {
+        display: block;
+        width: 100%;
+    }
 }
