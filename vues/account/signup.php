@@ -7,7 +7,7 @@
   <body>
     <?php include_once('../templates/header.php'); ?>
     <main id="main">
-      <form action="../../controller/AccountController.php" method="POST" id="form-control">
+      <form action="../../controller/AccountController.php?action=signup" method="POST" id="form-control">
         <div>
           <label for="pseuso">Pseudo : </label>
           <input

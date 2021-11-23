@@ -24,7 +24,14 @@ tr:nth-child(3)>td:nth-child(2) {
     background-color: red;
 }
 
-#form-control label {
+#main div {
+    width: 100%;
+    text-align: center;
+    margin: 0.8rem;
+}
+
+
+/* #form-control label {
     text-align: right;
     clear: both;
     float: left;
@@ -34,7 +41,7 @@ tr:nth-child(3)>td:nth-child(2) {
 select {
     text-align: right;
     float: right;
-}
+} */
 
 #signup_button {
     text-align: left;

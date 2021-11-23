@@ -1,11 +1,8 @@
 <?php
+session_start();
 require_once("../config/mysql.php");
 require_once("../config/config.php");
 
-$error = [
-    "message" => "",
-    "exist" => false
-];
 
 function checkLogin($email, $password)
 {
@@ -37,7 +34,7 @@ function getPasswordUser($email, $password)
     global $connexion;
     global $error;
 
-    $query = $connexion->prepare("SELECT `password`, `pseudo`  FROM `user` WHERE email=:email;");
+    $query = $connexion->prepare("SELECT `id`, `password`, `pseudo`  FROM `user` WHERE email=:email;");
     $response = $query->execute(["email" => $email]);
     if (!$response) {
         $error["message"] .= "Une erreur s'est produite durant la recherche du mot de passe";
@@ -76,5 +73,6 @@ function verifyPassword($aDatas, $password) {
 }
 
 function createSession($aDatas) {
+    $_SESSION['user']['id'] = $aDatas['id'];
     $_SESSION['user']['pseudo'] = $aDatas['pseudo'];
 }

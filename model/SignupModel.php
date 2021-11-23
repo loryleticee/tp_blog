@@ -2,11 +2,6 @@
 require_once("../config/mysql.php");
 require_once("../config/config.php");
 
-$error = [
-    "message" => "",
-    "exist" => false
-];
-
 function checkSignUp($pseudo, $email, $password, $comfirm_password, $user_type, $accepted)
 {
     global $error;

@@ -2,49 +2,68 @@
 require_once("../config/config.php");
 require_once("../model/SignupModel.php");
 require_once("../model/LoginModel.php");
+require_once("../helpers/redirect.php");
 
-if (
-    isset(
-        $_POST['pseudo'], //Lory
-        $_POST['email'],
-        $_POST['password'],
-        $_POST['comfirm_password'],
-        $_POST['user_type'],
-        $_POST['accepted']
-    )
-) {
-    $isValid = checkSignUp(
-        $_POST['pseudo'],
-        $_POST['email'],
-        $_POST['password'],
-        $_POST['comfirm_password'],
-        $_POST['user_type'],
-        $_POST['accepted']
-    );
-    var_dump($isValid);
-    die();
+if (!isset($_GET['action'])) {
+    die("Params needed");
+}
 
-    if ($isValid['exist']) {
-        header("Location:" . $domaine . "/vues/account/signup.php");
-        return;
-    }
+$action = $_GET['action'];
 
-    header("Location:" . $domaine . "/vues/account/successfully.php");
-    return;
+switch ($action) {
+    case 'login':
+        login();
+        break;
+
+    case 'signup':
+        signUp();
+        break;
+        
+    default:
+        die("no action provide");
+        break;
 }
 
 
-if (isset($_POST['email'], $_POST['password'])) {
-    $isValid = checkLogin(
-        $_POST['email'],
-        $_POST['password']
-    );
+function signUp()
+{
+    global $domaine;
 
-    if (!$isValid['exist']) {
-        header("Location:" . $domaine . "/index.php");
-        return;
+    if (
+        isset($_POST['pseudo'], $_POST['email'], $_POST['password'], $_POST['comfirm_password'], $_POST['user_type'], $_POST['accepted'])
+    ) {
+        $isValid = checkSignUp(
+            $_POST['pseudo'],
+            $_POST['email'],
+            $_POST['password'],
+            $_POST['comfirm_password'],
+            $_POST['user_type'],
+            $_POST['accepted']
+        );
+
+        if ($isValid['exist']) {
+            redirect($domaine . "/vues/account/signup.php");
+        }
+
+        redirect($domaine . "/vues/account/successfully.php");
     }
+}
 
-    header("Location:" . $domaine . "/vues/account/login.php?error=" . $isValid['message']);
-    return;
+function login()
+{
+    global $domaine;
+
+    if (isset($_POST['email'], $_POST['password'])) {
+        $isValid = checkLogin(
+            $_POST['email'],
+            $_POST['password']
+        );
+
+        if (!$isValid['exist']) {
+            redirect($domaine . "/index.php");
+
+        }
+
+        redirect($domaine . "/vues/account/login.php?error=" . $isValid['message']);
+    }
 }
