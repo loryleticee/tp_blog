@@ -119,6 +119,13 @@ li {
     float: left;
 }
 
+
+#container-article {
+    display: flex;
+    justify-content: center;
+    background-color: white;
+}
+
 @media screen and (max-width: 375px) {
     #nav {
         display: none;

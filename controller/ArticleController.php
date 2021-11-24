@@ -2,7 +2,7 @@
 session_start();
 require_once("../config/config.php");
 require_once("../model/ArticleModel.php");
-require_once("../helpers/redirect.php");
+require_once("../helpers/RedirectHelper.php");
 
 if (!isset($_GET['action'])) {
     die("Params needed");

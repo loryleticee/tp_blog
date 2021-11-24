@@ -10,7 +10,5 @@
     content="blog, titans, héros, discution, jeux, génie"
 />
 <meta name="author" content="Lory LÉTICÉE" />
-<link rel="stylesheet" href="../../assets/style/main.css" />
-<link rel="stylesheet" href="../../assets/style/burger-menu.css" />
 
 <title>Accueil - Blog</title>

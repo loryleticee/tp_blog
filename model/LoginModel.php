@@ -81,6 +81,6 @@ function comparePassword($aDatas, $password) {
 }
 
 function createSession($aDatas) {
-    $_SESSION['user']['id'] = $aDatas['id'];
-    $_SESSION['user']['pseudo'] = $aDatas['pseudo'];
+    $_SESSION['id'] = $aDatas['id'];
+    $_SESSION['pseudo'] = $aDatas['pseudo'];
 }

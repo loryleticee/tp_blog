@@ -6,6 +6,7 @@ require_once('../../helpers/ArticlesHelper.php');
 if (!isset($_GET['id'])) {
     die("Il manque un paramètre");
 }
+
 $aArticle = getArticle($_GET['id']);
 ?>
 <!DOCTYPE html>

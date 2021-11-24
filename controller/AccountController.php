@@ -2,14 +2,13 @@
 require_once("../config/config.php");
 require_once("../model/SignupModel.php");
 require_once("../model/LoginModel.php");
-require_once("../helpers/redirect.php");
+require_once("../helpers/RedirectHelper.php");
 
 if (!isset($_GET['action'])) {
     die("Params needed");
 }
 
 $action = $_GET['action'];
-
 
 switch ($action) {
     case 'login':
@@ -24,7 +23,6 @@ switch ($action) {
         die("no action provide");
         break;
 }
-
 
 function signUp()
 {
