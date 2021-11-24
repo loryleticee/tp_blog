@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once("../config/config.php");
 require_once("../model/ArticleModel.php");
 require_once("../helpers/redirect.php");
@@ -13,24 +14,58 @@ switch ($action) {
     case 'add':
         add();
         break;
+    case 'show':
+        show();
+        break;
+    case 'modify':
+        modify();
+        break;
     default:
         die("no action provide");
         break;
 }
 
-function add() {
+function add()
+{
     global $domaine;
-    if ($_GET['action'] === "add") {
-        if(!isset(
-            $_POST['user_id'],
-            $_POST['title'],
-            $_POST['content'],
-            $_POST['categorie'],
-            )) {
-                redirect($domaine . "/vues/article/add.php?error=un parametre manque à la requete");
-        }
-    
-        $isValid = checkAddParams($_POST['user_id'], $_POST['title'],  $_POST['content'], $_POST['categorie']);
-    
+    if (!isset(
+        $_POST['user_id'],
+        $_POST['title'],
+        $_POST['content'],
+        $_POST['categorie'],
+    )) {
+        redirect($domaine . "/vues/article/add.php?error=un parametre manque à la requete");
     }
+
+    $isValid = checkAddParams($_POST['user_id'], $_POST['title'],  $_POST['content'], $_POST['categorie']);
+}
+
+function show()
+{
+    global $domaine;
+    redirect($domaine . "/vues/articles/articles.php");
+}
+
+function modify()
+{
+    global $domaine;
+    if (empty($_POST)) {
+        if (!isset($_GET['id'])) {
+            die('missed parameters');
+        }
+
+        $article_id =  htmlspecialchars(strip_tags($_GET['id']));
+
+        redirect($domaine . "/vues/articles/modify.php?id=" . $article_id);
+    }
+
+    if (isset($_POST['article_id'], $_POST['title'], $_POST['content'])) {
+        $isModify = modifyArticle($_POST['article_id'], $_POST['title'], $_POST['content'], $_SESSION['user']['id']);
+
+        if (!$isModify['exist']) {
+            redirect($domaine . "/vues/articles/article.php?id=". $_POST['article_id']);
+        }
+    }
+
+    redirect($domaine . "/vues/articles/articles.php");
 }

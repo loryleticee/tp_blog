@@ -11,14 +11,14 @@ function checkLogin($email, $password)
     $password =  htmlspecialchars(strip_tags($password));
 
     if ( empty($email) || empty($password)) {
-        $error["message"] .= "Veuillez remplir tous les champs. Merci ! </br>";
+        $error["message"] = "Veuillez remplir tous les champs. Merci ! </br>";
         $error["exist"] = true;
 
         return $error;
     }
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $error["message"] .= "Saisissez un adresse email valide";
+        $error["message"] = "Saisissez un adresse email valide";
         $error["exist"] = true;
 
         return $error;
@@ -34,27 +34,34 @@ function getPasswordUser($email, $password)
     global $connexion;
     global $error;
 
-    $query = $connexion->prepare("SELECT `id`, `password`, `pseudo`  FROM `user` WHERE email=:email;");
-    $response = $query->execute(["email" => $email]);
+    try {
+        $query = $connexion->prepare("SELECT `id`, `password`, `pseudo`  FROM `user` WHERE email=:email;");
+        $response = $query->execute(["email" => $email]);
+    } catch(\PDOException $_error ) {
+        $msg = $_error->getMessage();
+        $msg = $_error->getCode();
+        die($msg);
+    }
+    
     if (!$response) {
-        $error["message"] .= "Une erreur s'est produite durant la recherche du mot de passe";
+        $error["message"] = "Une erreur s'est produite durant la recherche du mot de passe";
         $error["exist"] = true;
+
         return $error;
     }
 
-    $aDatas = $query->fetchAll();
+    $aDatas = $query->fetch();
 
-    verifyPassword($aDatas, $password);
+    comparePassword($aDatas, $password);
 
     return $error;
 }
 
-function verifyPassword($aDatas, $password) {
+function comparePassword($aDatas, $password) {
     global $error;
-    $aDatas = $aDatas[0];
 
     if(!isset($aDatas['password'])) {
-        $error["message"] .= "L’adresse e-mail que vous avez saisie n’est pas associée à un compte. <a href='/vues/account/signup.php'>Céer votre compte</a>";
+        $error["message"] = "L’adresse e-mail que vous avez saisie n’est pas associée à un compte. <a href='/vues/account/signup.php'>Céer votre compte</a>";
         $error["exist"] = true;
 
         return $error;
@@ -63,7 +70,7 @@ function verifyPassword($aDatas, $password) {
     $passwordVerified = password_verify($password, $aDatas['password']);
 
     if (!$passwordVerified) {
-        $error["message"] .= "Mot de passe incorrect.";
+        $error["message"] = "Mot de passe incorrect.";
         $error["exist"] = true;
 
         return $error;

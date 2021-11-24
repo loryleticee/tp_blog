@@ -1,7 +1,7 @@
 <header>
     <h1 id="title">Blog des titans</h1>
     <nav id="nav">
-        <a href="/vues/articles/articles.php">Articles</a>
+        <a href="/controller/ArticleController.php?action=show">Articles</a>
         <?php if (isset($_SESSION['user'])) : ?>
             <a href="/vues/articles/add.php">Ajouter un article</a>
         <?php endif ?>

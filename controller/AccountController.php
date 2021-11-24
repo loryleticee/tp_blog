@@ -18,7 +18,7 @@ switch ($action) {
     case 'signup':
         signUp();
         break;
-        
+
     default:
         die("no action provide");
         break;
@@ -61,7 +61,6 @@ function login()
 
         if (!$isValid['exist']) {
             redirect($domaine . "/index.php");
-
         }
 
         redirect($domaine . "/vues/account/login.php?error=" . $isValid['message']);
