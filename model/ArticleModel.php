@@ -1,11 +1,10 @@
 <?php
 require_once("../config/mysql.php");
 require_once("../config/config.php");
+require_once("../helpers/ArticlesHelper.php");
 
-print(__DIR__);
-die('tt');
 
-function checkAddParams($user_id, $title, $content, $categorie) {
+function checkAddParams($user_id, $title, $content, $categorie)  {
     global $error;
     $user_id =  htmlspecialchars(strip_tags($user_id));
     $title =  htmlspecialchars(strip_tags($title));
@@ -18,7 +17,6 @@ function checkAddParams($user_id, $title, $content, $categorie) {
 
         return $error;
     }
-
     insertArticle($user_id, $title, $content, $categorie);
     
     return $error;
@@ -27,6 +25,7 @@ function checkAddParams($user_id, $title, $content, $categorie) {
 function insertArticle($user_id, $title, $content, $categorie) : array {
     global $connexion;
     global $error;
+
     try {
         $query = $connexion->prepare("INSERT INTO `article` (`title`, `content`, `user_id`) VALUES (:title, :content, :user_id)");
         $response = $query->execute(['title' => $title, 'content' => $content, 'user_id' => $user_id]);
@@ -44,9 +43,13 @@ function insertArticle($user_id, $title, $content, $categorie) : array {
         $error["exist"] = true;
         return $error;
     }
+    
+    $iArticleID = getLastUserArticle($title, $user_id);
+    $error["article_id"] = $iArticleID;
 
     return $error;
 }
+
 
 function modifyArticle($article_id, $title, $content, $user_id) {
     global $connexion;
@@ -69,5 +72,7 @@ function modifyArticle($article_id, $title, $content, $user_id) {
         return $error;
     }
 
+
     return $error;
 }
+

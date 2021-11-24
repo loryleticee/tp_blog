@@ -60,3 +60,37 @@ function getArticles(): array
 
     return $aDatas;
 }
+
+function getLastUserArticle($title, $user_id) {
+    global $connexion;
+    global $error;
+    try {
+        $query = $connexion->prepare("SELECT `id` FROM `article` WHERE user_id=:id AND title=:title");
+        $response = $query->execute(['user_id' => $user_id, 'title' => $title]);
+    } catch (\PDOException $err) {
+        $error_code = $err->getCode();
+        $error_msg = $err->getMessage();
+        $error["message"] .= $error_msg;
+        $error["exist"] = true;
+
+        return $error;
+    }
+
+    if (!$response) {
+        $error["message"] = "Un probleme est survenu lors de la recupération du nouvel article.";
+        $error["exist"] = true;
+
+        return $error;
+    }
+
+    $aDatas = $query->fetch();
+
+    if (!isset($aDatas['id'])) {
+        $error["message"] = "Aucun article trouvé";
+        $error["exist"] = true;
+
+        return $error;
+    }
+
+    return  (int) $aDatas['id'];
+}

@@ -4,6 +4,7 @@ require_once("../../config/mysql.php");
 require_once('../../helpers/ArticlesHelper.php');
 
 $aArticles = getArticles();
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -17,18 +18,17 @@ $aArticles = getArticles();
     <main id="main">
         <?php
         if (isset($aArticles['exist'])) {
-            echo $_GET['datas']['message'];
-        }
+            echo $aArticles['message'];
+        } else {
 
-        echo "<ul>";
-        foreach ($aArticles as $key => $array_element) {
-                echo '<li><a href="/controller/ArticleController.php?action=modify&id=' . $array_element['id'] . '">' . $array_element["title"] . '</a></li>';
+            echo "<ul>";
+            foreach ($aArticles as $key => $array_element) {
+                    echo '<li><a href="/controller/ArticleController.php?action=modify&id=' . $array_element['id'] . '">' . $array_element["title"] . '</a></li>';
+            }
+            echo "</ul>";
         }
-        echo "</ul>";
-
         ?>
     </main>
-
 </body>
 
 <?php include_once('../templates/footer.php'); ?>

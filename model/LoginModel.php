@@ -7,6 +7,7 @@ require_once("../config/config.php");
 function checkLogin($email, $password)
 {
     global $error;
+    
     $email =  htmlspecialchars(strip_tags($email));
     $password =  htmlspecialchars(strip_tags($password));
 

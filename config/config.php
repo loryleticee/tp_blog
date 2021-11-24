@@ -1,5 +1,5 @@
 <?php
-$domaine = "http://localhost";
+$domaine = "http://localhost:8888";
 
 $error = [
     "message" => "",
