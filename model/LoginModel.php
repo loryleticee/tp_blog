@@ -82,5 +82,5 @@ function comparePassword($aDatas, $password) {
 
 function createSession($aDatas) {
     $_SESSION['id'] = $aDatas['id'];
-    $_SESSION['pseudo'] = $aDatas['pseudo'];
+    $_SESSION['pseudo'] = ucfirst($aDatas['pseudo']);
 }

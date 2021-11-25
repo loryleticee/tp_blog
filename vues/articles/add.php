@@ -6,6 +6,7 @@ session_start();
 
 <head>
     <?php include_once('../templates/head.php'); ?>
+    <link rel="stylesheet" href="../../assets/style/main.css" />
 </head>
 
 <body>
@@ -13,20 +14,23 @@ session_start();
     <main id="main">
         <form action="../../controller/ArticleController.php?action=add" method="POST" id="form-control">
             <div>
-                <input type="hidden" name="user_id" id="user_id" value="<?php if (isset($_SESSION['user']['id'])) { echo $_SESSION['user']['id']; }?>">
+                <input type="hidden" name="user_id" id="user_id" value="<?php if (isset($_SESSION['id'])) { echo $_SESSION['id']; }?>">
             </div>        
 
             <div>
                 <label for="title">Titre</label>
             </div>
             <div>
-                <input type="text" name="title" id="title" required />
+                <input type="text" size="100" name="title" id="title" required />
             </div>
             <div>
                 <label for="content">Ici le contenu de l'article </label>
             </div>
             <div>
-                <textarea name="content" id="content" required></textarea>
+                <textarea name="content" id="content" rows="10" cols="100" required></textarea>
+            </div>
+            <div>
+                <label for="categorie">Catégorie</label>
             </div>
             <div>
                 <select name="categorie" id="categorie">

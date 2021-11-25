@@ -1,140 +1,170 @@
+/*96C5F7
+93ACB5
+A9D3FF
+F2F4FF
+6C756B*/
+
 html {
-    background-color: #ccdad1;
-    font-family: "Avenir Next", "Avenir", sans-serif;
+  background-color: #f2f4ff;
+  font-family: "Avenir Next", "Avenir", sans-serif;
 }
 
 .button_bleu:hover {
-    background-color: blue;
+  background-color: blue;
+}
+
+.blue {
+  color: #96c5f7;
+  font-weight: 600;
 }
 
 #form-control {
-    padding: 2rem;
-    background-color: #9caea9;
+  padding: 2rem;
+  background-color: #f2f4ff;
+  border-radius: 10px;
+  border: 2px solid #a9d3ff;
+  margin: 10px;
 }
 
 .dropdown {
-    display: none;
+  display: none;
 }
 
-tr:nth-child(3)>td:nth-child(2) {
-    background-color: blue;
+tr:nth-child(3) > td:nth-child(2) {
+  background-color: blue;
 }
 
 #deuxieme {
-    background-color: red;
+  background-color: red;
 }
-
-#main div {
-    width: 100%;
-    text-align: center;
-    margin: 0.8rem;
-}
-
-
-/* #form-control label {
-    text-align: right;
-    clear: both;
-    float: left;
-}
-
-#form-control input,
-select {
-    text-align: right;
-    float: right;
-} */
 
 #signup_button {
-    text-align: left;
-    float: left;
-    clear: both;
-    margin-top: 1rem;
+  text-align: left;
+  float: left;
+  clear: both;
+  margin-top: 1rem;
 }
 
 #main-home {
-    display: flex;
-    justify-content: center;
-    flex: 1 1;
-    -ms-flex: 1;
-    height: 100vh;
-    background-color: #6f6866;
-    background: url("../images/knight-6489579_1920.jpg");
-    background-size: cover;
+  display: flex;
+  justify-content: center;
+  flex: 1 1;
+  -ms-flex: 1;
+  height: 100vh;
+  background-color: #f2f4ff;
+  background: url("../images/knight-6489579_1920.jpg");
+  background-size: cover;
 }
 
 #main {
-    display: flex;
-    justify-content: center;
-    flex: 1 1;
-    -ms-flex: 1;
-    height: 100vh;
-    background-color: #6f6866;
+  display: flex;
+  justify-content: center;
+  flex: 1 1;
+  -ms-flex: 1;
+  height: 100vh;
+  background-color: #fff;
 }
 
 header {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 #nav {
-    width: 50%;
-    display: flex;
-    justify-content: space-evenly;
+  width: 50%;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 #nav a {
-    color: #6f6866;
-    text-decoration: none;
+  color: #6f6866;
+  text-decoration: none;
 }
 
-
-/* #nav a:hover {
+#nav a:hover {
+  font-weight: 600;
   color: #788585;
-} */
+}
+
+form > div {
+  text-align: center;
+  margin: 1rem;
+}
 
 #nav ul,
 li {
-    list-style: none;
+  list-style: none;
 }
 
 #title {
-    text-transform: uppercase;
-    color: #38302e;
+  text-transform: uppercase;
+  color: #38302e;
 }
 
 #footer {
-    display: flex;
-    justify-content: center;
-    padding: 2rem;
-    background-color: #38302e;
-    color: #ffffff;
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+  background-color: #38302e;
+  color: #ffffff;
 }
 
 #nav-burger {
-    display: none;
+  display: none;
 }
 
 #error {
-    color: red;
-    float: left;
+  color: red;
+  float: left;
+}
+.action-button {
+  font-size: 1rem;
+}
+.container-article {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin: 1rem;
+  background-color: white;
 }
 
-
-#container-article {
-    display: flex;
-    justify-content: center;
-    background-color: white;
+.article-title {
+  padding: 12px;
+  background-color: white;
+  border: 2px solid #93acb5;
+  text-align: center;
 }
+
+.article-content {
+  padding: 12px;
+  background-color: white;
+  border: 2px solid #93acb5;
+  text-align: center;
+}
+
+#categorie {
+  text-align: center;
+  width: 100%;
+}
+
+#login_button {
+  margin: 1rem;
+  text-align: center;
+}
+
 
 @media screen and (max-width: 375px) {
-    #nav {
-        display: none;
-    }
-    .my_array {
-        height: 75px;
-    }
-    #nav-burger {
-        display: block;
-        width: 100%;
-    }
+  #nav {
+    display: none;
+  }
+  .my_array {
+    height: 75px;
+  }
+  #nav-burger {
+    display: block;
+    width: 100%;
+  }
 }

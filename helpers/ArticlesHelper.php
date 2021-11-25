@@ -4,7 +4,7 @@ function getArticle($article_id): array
     global $connexion;
     global $error;
     try {
-        $query = $connexion->prepare("SELECT * FROM `article` WHERE id=:id");
+        $query = $connexion->prepare("SELECT * FROM `article` WHERE id=:id AND is_deleted=0");
         $response = $query->execute(['id' => $article_id]);
     } catch (\PDOException $err) {
         $error_code = $err->getCode();
@@ -32,7 +32,7 @@ function getArticles(): array
     global $connexion;
     global $error;
     try {
-        $query = $connexion->prepare("SELECT * FROM `article`");
+        $query = $connexion->prepare("SELECT * FROM `article` WHERE is_deleted=0");
         $response = $query->execute();
     } catch (\PDOException $err) {
         $error_code = $err->getCode();
@@ -65,7 +65,7 @@ function getLastUserArticle($title, $user_id) {
     global $connexion;
     global $error;
     try {
-        $query = $connexion->prepare("SELECT `id` FROM `article` WHERE user_id=:id AND title=:title");
+        $query = $connexion->prepare("SELECT `id` FROM `article` WHERE user_id=:id AND title=:title AND is_deleted=0");
         $response = $query->execute(['user_id' => $user_id, 'title' => $title]);
     } catch (\PDOException $err) {
         $error_code = $err->getCode();

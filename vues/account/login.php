@@ -3,6 +3,7 @@
 
 <head>
   <?php include_once('../templates/head.php'); ?>
+  <link rel="stylesheet" href="../../assets/style/main.css" />
 </head>
 
 <body>

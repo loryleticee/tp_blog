@@ -11,6 +11,8 @@ $aArticles = getArticles();
 
 <head>
     <?php include_once('../templates/head.php'); ?>
+    <link rel="stylesheet" href="../../assets/style/main.css" />
+    <link rel="stylesheet" href="../../assets/style/burger-menu.css" />
 </head>
 
 <body>
@@ -19,13 +21,16 @@ $aArticles = getArticles();
         <?php
         if (isset($aArticles['exist'])) {
             echo $aArticles['message'];
-        } else {
+        } else {?>
 
-            echo "<ul>";
-            foreach ($aArticles as $key => $array_element) {
-                    echo '<li><a href="/controller/ArticleController.php?action=modify&id=' . $array_element['id'] . '">' . $array_element["title"] . '</a></li>';
-            }
-            echo "</ul>";
+           <div class="container-article">
+                <?php 
+                    foreach ($aArticles as $key => $array_element) {
+                            echo '<div class="article-title"><a href="/controller/ArticleController.php?action=show&id=' . $array_element['id'] . '">' . $array_element["title"] . '</a></div>';
+                    }
+                ?>
+           </div>
+        <?php
         }
         ?>
     </main>

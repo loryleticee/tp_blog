@@ -13,7 +13,7 @@
 
         <?php if (isset($_SESSION['id'])) : ?>
             <a href="/vues/account/logout.php">Déconnexion</a>
-            <span><?= $_SESSION['pseudo'] ?></span>
+            <span class="blue"><?= $_SESSION['pseudo'] ?></span>
         <?php endif ?>
 
     </nav>

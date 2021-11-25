@@ -17,6 +17,7 @@ function checkAddParams($user_id, $title, $content, $categorie)  {
 
         return $error;
     }
+    
     insertArticle($user_id, $title, $content, $categorie);
     
     return $error;
@@ -39,8 +40,9 @@ function insertArticle($user_id, $title, $content, $categorie) : array {
     }
 
     if (!$response) {
-        $error["message"] .= "Une erreur s'est produite durant l'ajout de l'article'";
+        $error["message"] =  "Une erreur s'est produite durant l'ajout de l'article'";
         $error["exist"] = true;
+        
         return $error;
     }
     

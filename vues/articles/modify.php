@@ -6,6 +6,9 @@ require_once('../../helpers/ArticlesHelper.php');
 if (!isset($_GET['id'])) {
     die("Il manque un paramètre");
 }
+if (empty($_GET['id'])) {
+    die("Identifiant d'article inconnu");
+}
 
 $aArticle = getArticle($_GET['id']);
 ?>
@@ -14,6 +17,7 @@ $aArticle = getArticle($_GET['id']);
 
 <head>
     <?php include_once('../templates/head.php'); ?>
+    <link rel="stylesheet" href="../../assets/style/main.css" />
 </head>
 
 <body>
@@ -28,13 +32,13 @@ $aArticle = getArticle($_GET['id']);
                 <label for="title">Titre</label>
             </div>
             <div>
-                <input type="text" name="title" id="title" value="<?=$aArticle['title']?>" required />
+                <input type="text" name="title" id="title" size="100" value="<?=$aArticle['title']?>" required />
             </div>
             <div>
                 <label for="content">Ici le contenu de l'article </label>
             </div>
             <div>
-                <textarea name="content" id="content" required>
+                <textarea name="content" id="content" rows="10" cols="100" required>
                     <?=$aArticle['content']?>
                 </textarea>
             </div>
@@ -55,5 +59,4 @@ $aArticle = getArticle($_GET['id']);
 </body>
 
 <?php include_once('../templates/footer.php'); ?>
-
 </html>
