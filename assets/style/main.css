@@ -77,12 +77,14 @@ header {
   justify-content: space-evenly;
 }
 
-#nav a {
+#nav a ,
+#nav-mobile_item>ul>li>a {
   color: #6f6866;
   text-decoration: none;
 }
 
-#nav a:hover {
+#nav a:hover, 
+#nav-mobile_item>ul>li>a:hover {
   font-weight: 600;
   color: #788585;
 }
@@ -110,7 +112,7 @@ li {
   color: #ffffff;
 }
 
-#nav-burger {
+#nav-mobile {
   display: none;
 }
 
@@ -155,16 +157,92 @@ li {
   text-align: center;
 }
 
+/* **** */
+.menu-btn {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    transition: all .5s ease-in-out;
+    /* border: 3px solid black; */
+}
 
-@media screen and (max-width: 375px) {
+.menu-btn__burger {
+    width: 30px;
+    height: 6px;
+    background: #A9D3FF;
+    border-radius:  5px;
+    box-shadow: 0 2px 5px #93ACB5;
+    transition: all .5s ease-in-out;
+}
+
+.menu-btn__burger::before,
+.menu-btn__burger::after {
+    content: "";
+    position: absolute;
+    width: 30px;
+    height: 6px;
+    background: #A9D3FF;
+    border-radius:  5px;
+    box-shadow: 0 2px 5px #93ACB5;
+    transition: all .5s ease-in-out;
+}
+
+.menu-btn__burger::before {
+    transform: translateY(-10px);
+}
+
+.menu-btn__burger::after {
+    transform: translateY(10px);
+}
+
+.menu-btn.open .menu-btn__burger {
+    transform: translateX(-50px);
+    background: transparent;
+    box-shadow: none;
+}
+
+.menu-btn.open .menu-btn__burger::before {
+    transform: rotate(45deg) translate(35px, -35px);
+}
+.menu-btn.open .menu-btn__burger::after {
+    transform: rotate(-45deg) translate(35px, 35px);
+}
+
+#nav-mobile_item {
+  display: none;
+  position: absolute;
+  top: 0rem;
+  line-height: 3rem;
+  right: 0.2rem;
+  opacity: 0;
+  background-color: #f2f4ff;;
+  width: 250px;
+
+}
+
+/* ***** */
+
+@media screen and (max-width: 700px) {
   #nav {
     display: none;
   }
-  .my_array {
-    height: 75px;
+  #nav-mobile {
+    display: flex;
   }
-  #nav-burger {
-    display: block;
-    width: 100%;
+  #nav-mobile_item.open {
+    display: flex;
+    animation: mymove 0.5s ;
+    animation-fill-mode: forwards;
+  }
+  
+  @keyframes mymove {
+    100% {
+      opacity: 1; 
+      top: 5.5rem;
+    }
   }
 }

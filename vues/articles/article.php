@@ -9,6 +9,7 @@ if (!isset($_GET['id'])) {
 if (empty($_GET['id'])) {
     die("Il manque un paramètre");
 }
+
 $article_id = htmlspecialchars(strip_tags($_GET['id']));
 $aArticle = getArticle($article_id);
 ?>

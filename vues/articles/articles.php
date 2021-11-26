@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once("../../config/mysql.php");
+require_once('../../config/config.php');
 require_once('../../helpers/ArticlesHelper.php');
 
 $aArticles = getArticles();
