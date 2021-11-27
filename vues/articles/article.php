@@ -39,8 +39,8 @@ $aArticle = getArticle($article_id);
                         <?=$aArticle["content"]?>
                     </div>
                     <div>
-                        <button class="action-button"><a href=<?='/controller/ArticleController.php?action=modify&id='.$aArticle['id']?>>Modifier</a></button>
-                        <button  class="action-button" onclick="_delete()">Supprimer</button>
+                        <span class="action-button" title="modifier l'article"><a href=<?='/controller/ArticleController.php?action=modify&id='.$aArticle['id']?>><i class="far fa-edit"></i></a></span>
+                        <span class="action-button" title="Supprimer l'article" onclick="_delete()"><i class="fas fa-trash-alt"></i></span>
                     </div>
                 </div>
             </div>

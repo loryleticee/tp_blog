@@ -38,7 +38,7 @@ $aArticle = getArticle($_GET['id']);
                 <label for="content">Ici le contenu de l'article </label>
             </div>
             <div>
-                <textarea name="content" id="content" class="textarea__input"  autofocus required>
+                <textarea name="content" id="content"  autofocus required>
                     <?= trim($aArticle['content']); ?>
                 </textarea>
             </div>

@@ -49,7 +49,7 @@ F2F4FF
   text-align: center;
   cursor: pointer;
   overflow: scroll;
-  min-height: 40rem;
+  min-height: 30rem;
 }
 
 .article-content:hover {
@@ -67,7 +67,7 @@ F2F4FF
   flex-direction: column;
   font-size: 14px;
   justify-content: start;
-  padding: 5rem;
+  padding: 2rem;
   row-gap: 1rem;
 }
 #categorie-aside > div > span:hover {
@@ -79,10 +79,11 @@ F2F4FF
   background-color: white;
   display: flex;
   flex-direction: column;
+  flex: 2 1 auto;
   font-size: 16px;
   gap: 10px;
   justify-content: center;
-  flex: 2 1 auto;
+  margin: 1rem;
 }
 #error {
   color: red;
@@ -113,11 +114,13 @@ input {
 
 .main-center {
   -ms-flex: 1;
+  background-color: #fff;
+  border-radius: 0.5rem;
   display: flex;
   flex: 1 1;
-  justify-content: center;
   height: 100vh;
-  background-color: #fff;
+  justify-content: center;
+  padding: 1rem;
 }
 
 .flex-container {

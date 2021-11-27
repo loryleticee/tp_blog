@@ -17,7 +17,7 @@
     </nav>
 
     <nav id="nav-mobile">
-        <div class="menu-btn">
+        <div class="menu-btn" title="Menu">
             <div class="menu-btn__burger"></div>
         </div>
         <div id="nav-mobile_item">
