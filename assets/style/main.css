@@ -8,7 +8,7 @@ F2F4FF
   color: #38302e;
   cursor: pointer;
 }
-.action-button>a {
+.action-button > a {
   text-decoration: none;
   color: #38302e;
 }
@@ -21,13 +21,13 @@ F2F4FF
   padding: 12px;
   text-align: center;
 }
-.article-title>a {
+.article-title > a {
   text-decoration: none;
   color: #38302e;
 }
 
 .article-title:hover {
-  animation: toto .8s;
+  animation: toto 0.8s;
   animation-fill-mode: forwards;
 }
 
@@ -46,7 +46,8 @@ F2F4FF
   text-align: center;
   cursor: pointer;
 }
-.article-content:hover { 
+
+.article-content:hover {
   font-weight: 500;
 }
 
@@ -128,11 +129,14 @@ form > div {
   margin: 1rem;
 }
 
+footer {
+  background-color: #38302e;
+}
+
 #footer {
   display: flex;
   justify-content: center;
   padding: 2rem;
-  background-color: #38302e;
   color: #ffffff;
 }
 
@@ -254,6 +258,21 @@ li {
   opacity: 0;
   background-color: #f2f4ff;
   width: 250px;
+}
+
+#pre-footer__sitemap {
+  min-height: 10vh;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  padding: 1rem 15rem;
+}
+#pre-footer__sitemap > div > a {
+  color: #f2f4ff;
+  text-decoration: none;
+}
+#pre-footer__sitemap > div > a:hover {
+  text-decoration: underline;
 }
 
 select {
