@@ -22,27 +22,27 @@ $aArticle = getArticle($_GET['id']);
 
 <body>
     <?php include_once('../templates/header.php'); ?>
-    <main id="main">
+    <main class="main-center">
         <form action="../../controller/ArticleController.php?action=modify" method="POST" id="form-control">
             <div>
-                <input type="hidden" name="article_id" id="article_id" value="<?=$aArticle['id']?>">
-            </div>        
+                <input type="hidden" name="article_id" id="article_id" value="<?= $aArticle['id'] ?>">
+            </div>
 
             <div>
                 <label for="title">Titre</label>
             </div>
             <div>
-                <input type="text" name="title" id="title" size="100" value="<?=$aArticle['title']?>" required />
+                <input type="text" name="title" id="title" size="100" value="<?= $aArticle['title'] ?>" required />
             </div>
             <div>
                 <label for="content">Ici le contenu de l'article </label>
             </div>
             <div>
-                <textarea name="content" id="content" rows="10" cols="100" required>
-                    <?=$aArticle['content']?>
+                <textarea name="content" id="content" rows="10" cols="100" autofocus required>
+                    <?= trim($aArticle['content']); ?>
                 </textarea>
             </div>
-            
+
             <div id="login_button">
                 <input type="submit" value="Modifier l'article" />
             </div>
@@ -59,4 +59,5 @@ $aArticle = getArticle($_GET['id']);
 </body>
 
 <?php include_once('../templates/footer.php'); ?>
+
 </html>

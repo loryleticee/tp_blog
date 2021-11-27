@@ -41,7 +41,7 @@ function signUp()
         );
 
         if ($isValid['exist']) {
-            redirect($domaine . "/vues/account/signup.php");
+            redirect($domaine . "/vues/account/signup.php?error=". $isValid["message"]);
         }
 
         redirect($domaine . "/vues/account/successfully.php");
@@ -59,7 +59,7 @@ function login()
         );
 
         if (!$isValid['exist']) {
-            redirect($domaine . "/index.php");
+            redirect($domaine . "/vues/articles/articles.php");
         }
 
         redirect($domaine . "/vues/account/login.php?error=" . $isValid['message']);

@@ -8,13 +8,13 @@
 
 <body>
   <?php include_once('../templates/header.php'); ?>
-  <main id="main">
+  <main class="main-center">
     <form action="../../controller/AccountController.php?action=login" method="POST" id="form-control">
       <div>
         <label for="email">Email :</label>
       </div>
       <div>
-        <input type="email" name="email" id="email" required />
+        <input type="email" name="email" id="email" autofocus required />
       </div>
       <div>
         <label for="password">Mot de passe : </label>

@@ -3,7 +3,9 @@ session_start();
 require_once("../../config/mysql.php");
 require_once('../../config/config.php');
 require_once('../../helpers/ArticlesHelper.php');
+require_once('../../helpers/CategoriesHelper.php');
 
+$aCategories = getCategories();
 $aArticles = getArticles();
 
 ?>
@@ -19,21 +21,26 @@ $aArticles = getArticles();
 <body>
     <?php include_once('../templates/header.php'); ?>
     <main id="main">
-        <?php
-        if (isset($aArticles['exist'])) {
-            echo $aArticles['message'];
-        } else {?>
-
-           <div class="container-article">
-                <?php 
+            <aside id="categorie-aside">
+                <?php
+                foreach ($aCategories as $cat) : ?>
+                    <div>
+                        <span><?= $cat['label'] ?></span>
+                    </div>
+                <?php endforeach ?>
+            </aside>
+            <?php
+            if (isset($aArticles['exist'])) {
+                echo $aArticles['message'];
+            } else { ?>
+                <div class="container-article">
+                    <?php
                     foreach ($aArticles as $key => $array_element) {
-                            echo '<div class="article-title"><a href="/controller/ArticleController.php?action=show&id=' . $array_element['id'] . '">' . $array_element["title"] . '</a></div>';
+                        echo '<div class="article-title"><a href="/controller/ArticleController.php?action=show&id=' . $array_element['id'] . '">' . $array_element["title"] . '</a></div>';
                     }
-                ?>
-           </div>
-        <?php
-        }
-        ?>
+                    ?>
+                </div>
+            <?php } ?>
     </main>
 </body>
 

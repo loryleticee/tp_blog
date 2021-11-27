@@ -18,14 +18,14 @@ function checkSignUp($pseudo, $email, $password, $comfirm_password, $user_type, 
         empty($pseudo) || empty($email) || empty($password)
         || empty($comfirm_password) || empty($user_type)
     ) {
-        $error["message"] .= "Veuillez remplir tous les champs. Merci ! </br>";
+        $error["message"] = "Veuillez remplir tous les champs. Merci ! </br>";
         $error["exist"] = true;
 
         return $error;
     }
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $error["message"] .= "Saisissez un adresse email valide";
+        $error["message"] = "Saisissez un adresse email valide";
         $error["exist"] = true;
 
         return $error;
@@ -42,11 +42,28 @@ function addUser($pseudo, $email, $password, $user_type, $accepted)
 {
     global $connexion;
     global $error;
+    try {
+        $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $query = $connexion->prepare("INSERT INTO `user`(`pseudo`, `email`, `password`, `accepted`)  VALUES (:pseudo, :email, :pwd, :accepted)");
+        $response = $query->execute(["pseudo" => $pseudo,  "email" => $email, "pwd" => $password, "accepted" => $accepted]);
+    } catch(\PDOException $_error ) {
+        $msg = $_error->getMessage();
+        $c = (int) $_error->getCode();
+        switch ($c) {
+            case 23000:
+                $error["message"] = "Un compte existe déjà avec cet email.";
+                $error["exist"] = true;
 
-    $query = $connexion->prepare("INSERT INTO `user`(`pseudo`, `email`, `password`, `accepted`)  VALUES (:pseudo, :email, :pwd, :accepted);");
-    $response = $query->execute(["pseudo" => $pseudo,  "email" => $email, "pwd" => $password, "accepted" => $accepted]);
+                return $error;
+                break;
+            
+            default:
+                # code...
+                break;
+        }
+    }
     if (!$response) {
-        $error["message"] .= "Une erreur s'est produite durant l'insertion";
+        $error["message"] = "Une erreur s'est produite durant l'insertion";
         $error["exist"] = true;
     }
 }

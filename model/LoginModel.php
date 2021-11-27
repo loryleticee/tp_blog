@@ -67,7 +67,7 @@ function comparePassword($aDatas, $password) {
 
         return $error;
     }
-    
+
     $passwordVerified = password_verify($password, $aDatas['password']);
 
     if (!$passwordVerified) {

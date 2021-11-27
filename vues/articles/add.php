@@ -1,5 +1,9 @@
-<?php 
+<?php
 session_start();
+require_once("../../config/mysql.php");
+require_once('../../helpers/CategoriesHelper.php');
+
+$aCategories = getCategories();
 ?>
 <!DOCTYPE html>
 <html>
@@ -11,17 +15,19 @@ session_start();
 
 <body>
     <?php include_once('../templates/header.php'); ?>
-    <main id="main">
+    <main class="main-center">
         <form action="../../controller/ArticleController.php?action=add" method="POST" id="form-control">
             <div>
-                <input type="hidden" name="user_id" id="user_id" value="<?php if (isset($_SESSION['id'])) { echo $_SESSION['id']; }?>">
-            </div>        
+                <input type="hidden" name="user_id" id="user_id" value="<?php if (isset($_SESSION['id'])) {
+                                                                            echo $_SESSION['id'];
+                                                                        } ?>">
+            </div>
 
             <div>
                 <label for="title">Titre</label>
             </div>
             <div>
-                <input type="text" size="100" name="title" id="title" required />
+                <input type="text" size="100" name="title" id="title" autofocus required />
             </div>
             <div>
                 <label for="content">Ici le contenu de l'article </label>
@@ -34,9 +40,10 @@ session_start();
             </div>
             <div>
                 <select name="categorie" id="categorie">
-                    <option value="1">Héros</option>
-                    <option value="2">Avengers</option>
-                    <option value="3">Méchants</option>
+                    <?php
+                    foreach ($aCategories as $cat) : ?>
+                        <option value=<?= $cat['id'] ?>><?= $cat['label'] ?></option>
+                    <?php endforeach ?>
                 </select>
             </div>
             <div id="login_button">
@@ -50,6 +57,7 @@ session_start();
                 </small>
             </span>
         </form>
+
     </main>
 
 </body>
