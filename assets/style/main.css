@@ -93,6 +93,7 @@ header {
   align-items: center;
   display: flex;
   justify-content: space-around;
+  background-color: #f2f4ff;
 }
 
 html {
@@ -304,6 +305,22 @@ select {
 /* ***** */
 
 @media screen and (max-width: 700px) {
+  #categorie-aside {
+    padding: 13rem 2rem;
+  }
+
+  header {
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+    background-color: #f2f4ff;
+    position: fixed;
+    width: 100%;
+    top: 0;
+  }
+  .main-center {
+    padding-top: 5rem;
+  }
   #nav {
     display: none;
   }
@@ -319,7 +336,7 @@ select {
   @keyframes mymove {
     100% {
       opacity: 1;
-      top: 6rem;
+      top: 5.4rem;
     }
   }
 }

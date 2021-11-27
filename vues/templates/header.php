@@ -30,7 +30,7 @@
                 <?php if (!isset($_SESSION['id'])) : ?>
                     <li><a href="/vues/account/signup.php" title="S'inscrire"><i class="fas fa-user-lock fa-2x"></i></a></li>
                 <?php endif ?>
-
+                    <li><a href="">&nbsp;</a></li>
                 <?php if (isset($_SESSION['id'])) : ?>
                     <li><a href="/vues/account/logout.php" title="Se déconnecter"><i class="fas fa-sign-out-alt fa-2x"></i></a></li>
                     <span class="pseudo-blue"><?= $_SESSION['pseudo'] ?></span>
