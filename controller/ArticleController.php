@@ -32,7 +32,7 @@ function add()
         $_POST['user_id'],
         $_POST['title'],
         $_POST['content'],
-        $_POST['categorie'],
+        $_POST['categorie']
     )) {
         redirect($domaine . "/vues/article/add.php?error=un parametre manque à la requete");
     }

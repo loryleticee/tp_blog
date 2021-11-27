@@ -24,13 +24,13 @@ $aArticle = getArticle($article_id);
 
 <body>
     <?php include_once('../templates/header.php'); ?>
-    <main id="main">
+    <main class="main-center">
         <?php
         if (isset($aArticle['exist'])) {
             echo $aArticle['message'];
         } else { 
             ?>
-            <div>
+            <div class="flex-container">
                 <div class="container-article">
                     <div class="article-title">
                         <span><strong><?=$aArticle["title"]?></strong></span>
@@ -48,9 +48,9 @@ $aArticle = getArticle($article_id);
         }
         ?>
     </main>
+    <?php include_once('../templates/footer.php'); ?>
 </body>
 
-<?php include_once('../templates/footer.php'); ?>
 <script>
     function _delete () {
         article_id = <?php print($aArticle['id']) ?>;

@@ -32,13 +32,13 @@ $aArticle = getArticle($_GET['id']);
                 <label for="title">Titre</label>
             </div>
             <div>
-                <input type="text" name="title" id="title" size="100" value="<?= $aArticle['title'] ?>" required />
+                <input type="text" name="title" id="title"  size="10" value="<?= $aArticle['title'] ?>" required />
             </div>
             <div>
                 <label for="content">Ici le contenu de l'article </label>
             </div>
             <div>
-                <textarea name="content" id="content" rows="10" cols="100" autofocus required>
+                <textarea name="content" id="content" class="textarea__input"  autofocus required>
                     <?= trim($aArticle['content']); ?>
                 </textarea>
             </div>
@@ -55,9 +55,7 @@ $aArticle = getArticle($_GET['id']);
             </span>
         </form>
     </main>
-
+    <?php include_once('../templates/footer.php'); ?>
 </body>
-
-<?php include_once('../templates/footer.php'); ?>
 
 </html>

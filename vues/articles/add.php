@@ -27,13 +27,13 @@ $aCategories = getCategories();
                 <label for="title">Titre</label>
             </div>
             <div>
-                <input type="text" size="100" name="title" id="title" autofocus required />
+                <input type="text" size="10" name="title" id="title" autofocus required />
             </div>
             <div>
                 <label for="content">Ici le contenu de l'article </label>
             </div>
             <div>
-                <textarea name="content" id="content" rows="10" cols="100" required></textarea>
+                <textarea name="content" id="content" cols="20" required></textarea>
             </div>
             <div>
                 <label for="categorie">Catégorie</label>

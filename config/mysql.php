@@ -3,7 +3,7 @@ $username = "root";
 $password = "root"; 
 $host = "localhost"; //localhost 
 $db = "blog";
-$port = "3306";
+$port = "8889";
 
 $option = [
     \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC,

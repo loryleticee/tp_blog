@@ -7,6 +7,7 @@ F2F4FF
   font-size: 1.5rem;
   color: #38302e;
   cursor: pointer;
+  margin: 1rem .8rem;
 }
 .action-button > a {
   text-decoration: none;
@@ -18,6 +19,7 @@ F2F4FF
   border-radius: 1rem;
   border: 2px solid #93acb5;
   cursor: pointer;
+  max-width: 44rem;
   padding: 12px;
   text-align: center;
 }
@@ -42,9 +44,12 @@ F2F4FF
   background-color: white;
   border-radius: 2rem;
   border: 2px solid #93acb5;
+  max-width: 44rem;
   padding: 12px;
   text-align: center;
   cursor: pointer;
+  overflow: scroll;
+  min-height: 40rem;
 }
 
 .article-content:hover {
@@ -77,8 +82,7 @@ F2F4FF
   font-size: 16px;
   gap: 10px;
   justify-content: center;
-  margin: 1rem;
-  padding: 0 25%;
+  flex: 2 1 auto;
 }
 #error {
   color: red;
@@ -114,6 +118,10 @@ input {
   justify-content: center;
   height: 100vh;
   background-color: #fff;
+}
+
+.flex-container {
+  display: flex;
 }
 
 #form-control {
@@ -265,7 +273,7 @@ li {
   display: flex;
   justify-content: space-evenly;
   flex-direction: column;
-  padding: 1rem 15rem;
+  padding: 2rem 3rem;
 }
 #pre-footer__sitemap > div > a {
   color: #f2f4ff;
@@ -283,7 +291,9 @@ select {
   margin-top: 1rem;
   text-align: center;
 }
-
+.textarea__input {
+  min-width: 23rem;
+}
 #title {
   text-transform: uppercase;
   color: #38302e;
@@ -306,7 +316,7 @@ select {
   @keyframes mymove {
     100% {
       opacity: 1;
-      top: 5.5rem;
+      top: 6rem;
     }
   }
 }
