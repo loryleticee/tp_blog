@@ -4,7 +4,12 @@ function getArticle($article_id): array
     global $connexion;
     global $error;
     try {
-        $query = $connexion->prepare("SELECT * FROM `article` WHERE id=:id AND is_deleted=0");
+        $query = $connexion->prepare(
+            "SELECT `article`.* , `user`.`pseudo` 
+            FROM `article`
+            INNER JOIN `user` ON `article`.`user_id` = `user`.`id`
+            WHERE `article`.`id` = :id AND `article`.is_deleted=0"
+        );
         $response = $query->execute(['id' => $article_id]);
     } catch (\PDOException $err) {
         $error_code = $err->getCode();
@@ -14,7 +19,11 @@ function getArticle($article_id): array
 
         return $error;
     }
-
+    if (!$response) {
+        $error["message"] .= "Une erreur s'est produite durant la recherche d'article'";
+        $error["exist"] = true;
+        return $error;
+    }
     $aDatas = $query->fetch();
 
     if (!isset($aDatas['id'])) {
@@ -61,12 +70,12 @@ function getArticles(): array
     return $aDatas;
 }
 
-function getLastUserArticle($title, $user_id) {
+function getLastUserArticle($user_id) {
     global $connexion;
     global $error;
     try {
-        $query = $connexion->prepare("SELECT `id` FROM `article` WHERE user_id=:id AND title=:title AND is_deleted=0");
-        $response = $query->execute(['user_id' => $user_id, 'title' => $title]);
+        $query = $connexion->prepare("SELECT `id` FROM `article` WHERE `user_id` = :u_id AND is_deleted=0 ORDER BY id DESC LIMIT 1");
+        $response = $query->execute(['u_id' => $user_id]);
     } catch (\PDOException $err) {
         $error_code = $err->getCode();
         $error_msg = $err->getMessage();
@@ -84,6 +93,7 @@ function getLastUserArticle($title, $user_id) {
     }
 
     $aDatas = $query->fetch();
+
 
     if (!isset($aDatas['id'])) {
         $error["message"] = "Aucun article trouvé";

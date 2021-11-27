@@ -1,13 +1,11 @@
 <?php
 session_start();
 require_once("../../config/mysql.php");
+require_once('../../helpers/RedirectHelper.php');
 require_once('../../helpers/ArticlesHelper.php');
 
-if (!isset($_GET['id'])) {
-    die("Il manque un paramètre");
-}
 if (empty($_GET['id'])) {
-    die("Identifiant d'article inconnu");
+    redirect("/vues/articles/articles.php");
 }
 
 $aArticle = getArticle($_GET['id']);

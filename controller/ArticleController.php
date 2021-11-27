@@ -40,7 +40,7 @@ function add()
     $isValid = checkAddParams($_POST['user_id'], $_POST['title'],  $_POST['content'], $_POST['categorie']);
 
     if ($isValid['exist']) {
-        redirect($domaine . "/vues/article/add.php?error=".$isValid['message']);
+        redirect($domaine . "/vues/articles/add.php?error=".$isValid['message']);
     }
  
     redirect($domaine . "/vues/articles/article.php?id=". $isValid['article_id']);

@@ -26,7 +26,7 @@ function checkAddParams($user_id, $title, $content, $categorie)  {
 function insertArticle($user_id, $title, $content, $categorie) : array {
     global $connexion;
     global $error;
-
+    $user_id = (int) $user_id;
     try {
         $query = $connexion->prepare("INSERT INTO `article` (`title`, `content`, `user_id`) VALUES (:title, :content, :user_id)");
         $response = $query->execute(['title' => $title, 'content' => $content, 'user_id' => $user_id]);
@@ -40,13 +40,13 @@ function insertArticle($user_id, $title, $content, $categorie) : array {
     }
 
     if (!$response) {
-        $error["message"] =  "Une erreur s'est produite durant l'ajout de l'article'";
+        $error["message"] =  "Une erreur s'est produite durant l\'ajout de l\'article'";
         $error["exist"] = true;
         
         return $error;
     }
     
-    $iArticleID = getLastUserArticle($title, $user_id);
+    $iArticleID = getLastUserArticle($user_id);
     $error["article_id"] = $iArticleID;
 
     return $error;

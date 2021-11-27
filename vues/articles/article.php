@@ -1,14 +1,13 @@
 <?php
 session_start();
 require_once("../../config/mysql.php");
+require_once('../../helpers/RedirectHelper.php');
 require_once('../../helpers/ArticlesHelper.php');
 
-if (!isset($_GET['id'])) {
-    die("Il manque un paramètre");
-}
 if (empty($_GET['id'])) {
-    die("Il manque un paramètre");
+    redirect("/vues/articles/articles.php");
 }
+
 
 $article_id = htmlspecialchars(strip_tags($_GET['id']));
 $aArticle = getArticle($article_id);
@@ -38,9 +37,18 @@ $aArticle = getArticle($article_id);
                     <div class="article-content">
                         <?=$aArticle["content"]?>
                     </div>
+                    <div class="article__author">
+                        <span><i class="fas fa-user-ninja"></i> &nbsp;&nbsp; Rédigé par <?=$aArticle['pseudo']?></span>
+                    </div>
                     <div>
-                        <span class="action-button" title="modifier l'article"><a href=<?='/controller/ArticleController.php?action=modify&id='.$aArticle['id']?>><i class="far fa-edit"></i></a></span>
-                        <span class="action-button" title="Supprimer l'article" onclick="_delete()"><i class="fas fa-trash-alt"></i></span>
+                        <?php
+                            if( $_SESSION['id'] === $aArticle['user_id']):
+                        ?>
+                            <span class="action-button" title="modifier l'article"><a href=<?='/controller/ArticleController.php?action=modify&id='.$aArticle['id']?>><i class="far fa-edit"></i></a></span>
+                            <span class="action-button" title="Supprimer l'article" onclick="_delete()"><i class="fas fa-trash-alt"></i></span>
+                        <?php
+                            endif
+                        ?>
                     </div>
                 </div>
             </div>

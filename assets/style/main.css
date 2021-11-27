@@ -9,6 +9,10 @@ F2F4FF
   cursor: pointer;
   margin: 1rem .8rem;
 }
+.action-button :hover{
+  color: #93acb5;
+}
+
 .action-button > a {
   text-decoration: none;
   color: #38302e;
@@ -39,7 +43,10 @@ F2F4FF
     background-color: #a9d3ff;
   }
 }
-
+.article__author:hover {
+  cursor:context-menu;
+  color: #a9d3ff;
+}
 .article-content {
   background-color: white;
   border-radius: 2rem;
