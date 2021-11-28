@@ -355,7 +355,6 @@ select {
   }
   .main-center {
     padding-top: 6rem;
-    max-height: 68vh;
   }
   header {
     align-items: center;
