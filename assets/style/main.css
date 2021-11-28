@@ -281,7 +281,7 @@ li {
   right: 0rem;
   opacity: 0;
   background-color: #f2f4ff;
-  width: 10rem;
+  width: 100vw;
 }
 
 #page {
@@ -364,7 +364,7 @@ select {
     100% {
       opacity: 1;
       top: 5.4rem;
-      height: 100vh;
+      height: 80vh;
     }
   }
 }
