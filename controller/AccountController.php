@@ -24,7 +24,10 @@ switch ($action) {
         break;
 }
 
-function signUp()
+/**
+ * @return void
+ */
+function signUp(): void
 {
     global $domaine;
 
@@ -48,7 +51,10 @@ function signUp()
     }
 }
 
-function login()
+/**
+ * @return void
+ */
+function login(): void
 {
     global $domaine;
 

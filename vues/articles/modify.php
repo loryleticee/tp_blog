@@ -7,7 +7,6 @@ require_once('../../helpers/ArticlesHelper.php');
 if (empty($_GET['id'])) {
     redirect("/vues/articles/articles.php");
 }
-
 $aArticle = getArticle($_GET['id']);
 ?>
 <!DOCTYPE html>

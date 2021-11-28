@@ -25,7 +25,10 @@ switch ($action) {
         break;
 }
 
-function add()
+/**
+ * @return void
+ */
+function add(): void
 {
     global $domaine;
     if (!isset(
@@ -46,7 +49,10 @@ function add()
     redirect($domaine . "/vues/articles/article.php?id=". $isValid['article_id']);
 }
 
-function show()
+/**
+ * @return void
+ */
+function show(): void
 {
     global $domaine;
     if(isset($_GET["id"])) {
@@ -59,7 +65,10 @@ function show()
     redirect($domaine . "/vues/articles/articles.php");
 }
 
-function modify()
+/**
+ * @return void
+ */
+function modify(): void
 {
     global $domaine;
     if (empty($_POST)) {

@@ -3,8 +3,16 @@ require_once("../config/mysql.php");
 require_once("../config/config.php");
 require_once("../helpers/ArticlesHelper.php");
 
-
-function checkAddParams($user_id, $title, $content, $categorie)  {
+/**
+ * Filtre les données passées en paramètre contre les injection SQL et verifie si elles sont vides
+ * @param int $user_id
+ * @param string $title
+ * @param string $content
+ * @param int|bool $categorie
+ * @return array Retourne un tableau contenant une clée exist qui vaut FALSE  si aucune erreur est survenu , True dans le cas contraire
+ */
+function checkAddParams(int $user_id, string $title, string $content, $categorie) : array
+{
     global $error;
     $user_id =  htmlspecialchars(strip_tags($user_id));
     $title =  htmlspecialchars(strip_tags($title));
@@ -23,7 +31,15 @@ function checkAddParams($user_id, $title, $content, $categorie)  {
     return $error;
 }
 
-function insertArticle($user_id, $title, $content, $categorie) : array {
+/**
+ * @param int $user_id
+ * @param string $title
+ * @param string $content
+ * @param int|bool $categorie
+ * @return array Retourne un tableau contenant une clée exist qui vaut FALSE si aucune erreur est survenu , True dans le cas contraire
+ */
+function insertArticle($user_id, $title, $content, $categorie) : array 
+{
     global $connexion;
     global $error;
     $user_id = (int) $user_id;
@@ -53,7 +69,8 @@ function insertArticle($user_id, $title, $content, $categorie) : array {
 }
 
 
-function modifyArticle($article_id, $title, $content, $user_id) {
+function modifyArticle($article_id, $title, $content, $user_id) 
+{
     global $connexion;
     global $error;
     try {
