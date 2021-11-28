@@ -43,7 +43,9 @@ $aArticles = getArticles();
                 </div>
             <?php } ?>
         </main>
-        <?php include_once('../templates/footer.php'); ?>
+        <div>
+            <?php include_once('../templates/footer.php'); ?>
+        </div>
     </div>
 </body>
 

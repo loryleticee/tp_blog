@@ -41,7 +41,7 @@ $aArticle = getArticle($article_id);
                         <div class="article__author">
                             <span><i class="fas fa-user-ninja"></i> &nbsp;&nbsp; Rédigé par <?= $aArticle['pseudo'] ?></span>
                         </div>
-                        <div>
+                        <div class="article__action">
                             <?php
                             if (!empty($_SESSION['id'])) :
                                 if ($_SESSION['id'] === $aArticle['user_id']) :
@@ -67,9 +67,7 @@ $aArticle = getArticle($article_id);
     function _delete() {
         article_id = <?php print($aArticle['id']) ?>;
         if (confirm('Etes vous sur de vouloir supprimer cet article ? ')) {
-            $.ajax({
-
-            })
+            window.location.href = '/controller/ArticleController.php?action=delete&id='+article_id;
         }
     }
 </script>

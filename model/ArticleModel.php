@@ -95,3 +95,28 @@ function modifyArticle($article_id, $title, $content, $user_id)
     return $error;
 }
 
+function deleteArticle($article_id, $user_id) 
+{
+    global $connexion;
+    global $error;
+    try {
+        $query = $connexion->prepare("UPDATE `article` SET `is_deleted` = 1  WHERE `user_id` = :user_id AND `id`= :article_id ");
+        $response = $query->execute(['user_id' => $user_id, "article_id" => $article_id]);
+    } catch ( \PDOException $err) {
+        $error_code = $err->getCode();
+        $error_msg = $err->getMessage();
+        $error["message"] .= $error_msg;
+        $error["exist"] = true;
+
+        return $error;
+    }
+
+    if (!$response) {
+        $error["message"] = "Une erreur s'est produite durant la suppression de l'article'";
+        $error["exist"] = true;
+        return $error;
+    }
+
+    return $error;
+}
+

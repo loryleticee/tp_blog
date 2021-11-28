@@ -7,9 +7,9 @@ F2F4FF
   font-size: 1.5rem;
   color: #38302e;
   cursor: pointer;
-  margin: 1rem .8rem;
+  margin: 1rem 0.8rem;
 }
-.action-button :hover{
+.action-button :hover {
   color: #93acb5;
 }
 
@@ -17,7 +17,11 @@ F2F4FF
   text-decoration: none;
   color: #38302e;
 }
-
+.article__action {
+  display: flex;
+  gap: 10rem;
+  justify-content: space-around;
+}
 .article-title {
   background-color: white;
   border-radius: 1rem;
@@ -44,7 +48,7 @@ F2F4FF
   }
 }
 .article__author:hover {
-  cursor:context-menu;
+  cursor: context-menu;
   color: #a9d3ff;
 }
 .article-content {
@@ -151,7 +155,6 @@ input {
   margin: 10px;
   padding: 2rem;
 }
-
 
 footer {
   background-color: #38302e;
@@ -303,7 +306,7 @@ li {
   text-decoration: underline;
 }
 
-input[type=checkbox]{
+input[type="checkbox"] {
   cursor: pointer;
 }
 
@@ -324,12 +327,35 @@ select {
 }
 /* ***** */
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 900px) {
+  .article__author {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    font-size: 12px;
+    margin-bottom: 1rem;
+  }
+  .article-content {
+    max-width: none;
+  }
   #categorie-aside {
-    padding: 13rem 2rem;
+    padding: 3rem 0rem;
+    justify-content: center;
+    align-items: center;
+    overflow: scroll;
+    margin-top: 4rem;
+  }
+  .container-article {
+    flex-flow: row wrap;
+    overflow: scroll;
+    align-content: flex-start;
+  }
+  #main {
+    flex-flow: column nowrap;
   }
   .main-center {
     padding-top: 6rem;
+    max-height: 68vh;
   }
   header {
     align-items: center;
@@ -340,7 +366,7 @@ select {
     width: 100%;
     top: 0;
   }
-  
+
   #nav {
     display: none;
   }

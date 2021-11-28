@@ -20,6 +20,9 @@ switch ($action) {
     case 'modify':
         modify();
         break;
+    case 'delete':
+        _delete();
+        break;
     default:
         die("no action provide");
         break;
@@ -91,3 +94,26 @@ function modify(): void
 
     redirect($domaine . "/vues/articles/articles.php");
 }
+
+/**
+ * @return void
+ */
+function _delete(): void
+{
+    global $domaine;
+    if (empty($_POST)) {
+        if (empty($_GET['id'])) {
+            die('missed parameters');
+        }
+        
+        $article_id =  htmlspecialchars(strip_tags($_GET['id']));
+        $isDelete = deleteArticle($article_id, $_SESSION['id']);
+
+        if ($isDelete['exist']) {
+            redirect($domaine . "/vues/articles/article.php?id=". $article_id . "&error=" . $isDelete['message']);
+        }
+    }
+
+    redirect($domaine . "/vues/articles/articles.php");
+}
+
