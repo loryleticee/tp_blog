@@ -10,11 +10,16 @@ session_start();
 </head>
 
 <body>
-  <?php include_once("./vues/templates/header.php");?>
+  <div class="root__control">
 
-  <main id="main-home">
+    <?php include_once("./vues/templates/header.php"); ?>
 
-  </main>
+    <main id="main-home">
+
+    </main>
+  </div>
+
 </body>
 <?php include_once('./vues/templates/footer.php') ?>
+
 </html>

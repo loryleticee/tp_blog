@@ -119,13 +119,17 @@ input {
   font-weight: 600;
   text-decoration: none;
 }
+.pseudo-blue:hover {
+  text-decoration: underline;
+  font-weight: 400;
+}
 
 .main-center {
   -ms-flex: 1;
   background-color: #fff;
   border-radius: 0.5rem;
   display: flex;
-  flex: 1 1;
+  flex: 1 1 auto;
   height: 100vh;
   justify-content: center;
   padding: 1rem;
@@ -136,6 +140,11 @@ input {
 }
 
 #form-control {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-content: center;
+  align-items: center;
   background-color: #f2f4ff;
   border-radius: 10px;
   border: 2px solid #a9d3ff;
@@ -143,10 +152,6 @@ input {
   padding: 2rem;
 }
 
-form > div {
-  text-align: center;
-  margin: 1rem;
-}
 
 footer {
   background-color: #38302e;
@@ -273,12 +278,16 @@ li {
   position: absolute;
   top: 0rem;
   line-height: 3rem;
-  right: 0.2rem;
+  right: 0rem;
   opacity: 0;
   background-color: #f2f4ff;
-  width: 250px;
+  width: 10rem;
 }
 
+#page {
+  display: flex;
+  flex-flow: column wrap;
+}
 #pre-footer__sitemap {
   min-height: 10vh;
   display: flex;
@@ -292,6 +301,10 @@ li {
 }
 #pre-footer__sitemap > div > a:hover {
   text-decoration: underline;
+}
+
+input[type=checkbox]{
+  cursor: pointer;
 }
 
 select {
@@ -315,7 +328,9 @@ select {
   #categorie-aside {
     padding: 13rem 2rem;
   }
-
+  .main-center {
+    padding-top: 6rem;
+  }
   header {
     align-items: center;
     display: flex;
@@ -325,9 +340,7 @@ select {
     width: 100%;
     top: 0;
   }
-  .main-center {
-    padding-top: 5rem;
-  }
+  
   #nav {
     display: none;
   }
@@ -336,14 +349,22 @@ select {
   }
   #nav-mobile_item.open {
     display: flex;
-    animation: mymove 0.5s;
+    animation: mymove 0.6s;
     animation-fill-mode: forwards;
+    animation-timing-function: ease;
   }
 
   @keyframes mymove {
+    /* 50% {
+      opacity: 0.5;
+      top: 5.4rem;
+      height: 70vh;
+    
+    } */
     100% {
       opacity: 1;
       top: 5.4rem;
+      height: 100vh;
     }
   }
 }

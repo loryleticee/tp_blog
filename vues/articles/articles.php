@@ -19,8 +19,9 @@ $aArticles = getArticles();
 </head>
 
 <body>
-    <?php include_once('../templates/header.php'); ?>
-    <main id="main">
+    <div id="page">
+        <?php include_once('../templates/header.php'); ?>
+        <main id="main">
             <aside id="categorie-aside">
                 <?php
                 foreach ($aCategories as $cat) : ?>
@@ -41,9 +42,10 @@ $aArticles = getArticles();
                     ?>
                 </div>
             <?php } ?>
-    </main>
+        </main>
+        <?php include_once('../templates/footer.php'); ?>
+    </div>
 </body>
 
-<?php include_once('../templates/footer.php'); ?>
 
 </html>

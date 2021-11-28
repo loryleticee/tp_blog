@@ -10,7 +10,7 @@ services:
         volumes:
             - .:/srv
         ports:
-            - "8086:80"
+            - "8082:80"
     app:
         image: easybar/php:7.2.9-dev
         volumes:
