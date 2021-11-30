@@ -1,0 +1,249 @@
+/* https://coolors.co/274060-335c81-65afff-1b2845-5899e2 */
+#accepted_canvas_input {
+  order: 1;
+}
+#accepted_canvas_label {
+  order: 2;
+}
+.accepted_canvas {
+  display: flex;
+  gap: .6rem;
+  align-items: center;
+  margin: 1rem;
+}
+
+.already-signup {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  margin: 1rem;
+  gap: 1rem;
+}
+.already-signup a{ 
+    text-decoration: none;
+    color: #65afff;
+}
+.already-signup a:hover{ 
+  text-decoration: underline;
+}
+aside {
+  background-color: #274060;
+  padding: 11%;
+}
+
+.article-title {
+  border-radius: 1rem;
+  padding: 1rem;
+  border: 1px solid #274060;
+  max-width: 30rem;
+}
+.article-title:hover {
+  box-shadow: 2px 2px 5px black;
+}
+
+.article-title a {
+  text-decoration: none;
+  color: black;
+}
+
+#categorie-aside {
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 1rem;
+}
+#categorie-aside span:hover {
+  text-decoration: underline;
+}
+.container-article {
+  align-items: center;
+  display: flex;
+  flex-flow: column nowrap;
+  flex: 2 1 auto;
+  gap: 1rem;
+  justify-content: center;
+  overflow: scroll;
+  padding: 1rem;
+}
+
+footer {
+  display: flex;
+  flex-flow: column nowrap;
+  background-color: #65afff;
+}
+
+#footer {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+}
+#pre-footer__sitemap {
+  padding: 3rem;
+}
+#pre-footer__sitemap a {
+  text-decoration: none;
+  color: #fff;
+}
+#pre-footer__sitemap a:hover {
+  text-decoration: underline;
+}
+header {
+  display: flex;
+  justify-content: space-around;
+  background-color: #335c81;
+}
+
+#main {
+  display: flex;
+  height: 100vh;
+}
+
+.main-center {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  min-height: 70vh;
+}
+
+label[for="accepted"] {
+  font-size: 12px;
+}
+
+#form-control {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  padding: 0 1rem;
+  gap: 0.5rem;
+  border: 1px solid #65afff;
+  border-radius: 2rem;
+  box-shadow: 2px 2px 5px #65afff;
+}
+
+.menu-btn {
+  display: flex;
+  width: 60px;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  cursor: pointer;
+}
+
+.menu-btn__burger {
+  width: 25px;
+  height: 3px;
+  background-color: #65afff;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+.menu-btn__burger::before,
+.menu-btn__burger::after {
+  content: "";
+  position: absolute;
+  width: 25px;
+  height: 3px;
+  background-color: #65afff;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+.menu-btn__burger::before {
+  transform: translateY(-10px);
+}
+.menu-btn__burger::after {
+  transform: translateY(10px);
+}
+
+.menu-btn.open .menu-btn__burger {
+  transform: translateX(-50px);
+  background: transparent;
+}
+
+.menu-btn.open .menu-btn__burger::before {
+  transform: rotate(45deg) translate(35px, -35px);
+}
+.menu-btn.open .menu-btn__burger::after {
+  transform: rotate(-45deg) translate(35px, 35px);
+}
+
+#nav {
+  width: 20rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+#nav a {
+  color: #65afff;
+}
+#nav a:hover {
+  color: #fff;
+}
+#nav-mobile {
+  display: none;
+}
+
+#nav-mobile li {
+  list-style: none;
+}
+
+#nav-mobile_item {
+  background-color: white;
+  display: none;
+  justify-content: flex-end;
+  opacity: 0;
+  padding-top: 1rem;
+  position: absolute;
+  right: 0.5rem;
+  top: 4rem;
+  width: 100vw;
+}
+
+#nav-mobile_item ul a {
+  color: #65afff;
+}
+
+#page {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+#user_type {
+  padding-top: 1rem;
+}
+
+@media (max-width: 1000px) {
+  #categorie-aside {
+    align-items: center;
+  }
+  .container-article {
+    justify-content: flex-start;
+  }
+  #main {
+    flex-flow: column nowrap;
+  }
+  #nav {
+    display: none;
+  }
+  #nav-mobile {
+    display: flex;
+    align-items: center;
+  }
+
+  #nav-mobile_item.open {
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+    animation: dropdownburgermenu 0.6s;
+    display: flex;
+  }
+}
+
+@keyframes dropdownburgermenu {
+  100% {
+    opacity: 1;
+    top: 5rem;
+    height: 80vh;
+  }
+}

@@ -47,7 +47,7 @@
         <div>
           <label for="user_type">Choissisez votre catégorie </label>
         </div>
-        <div>
+        <div class>
           <select name="user_type" id="user_type">
             <optgroup label="Administrateurs">
               <option value="Admin">Admin</option>
@@ -61,15 +61,16 @@
             </optgroup>
           </select>
         </div>
-        <div>
-          <label for="accepted">En cochant cette case, j'accepte que mes données soient exploitées par ....</label>
-          <input type="checkbox" name="accepted" id="accepted" required>
+        <div class="accepted_canvas">
+          <label id="accepted_canvas_label" for="accepted">En cochant cette case, j'accepte que mes données soient exploitées par ....</label>
+          <input type="checkbox" name="accepted" id="accepted_canvas_input" required>
         </div>
         <div id="signup_button">
           <input type="submit" value="S'inscrire" />
         </div>
-        <div>
-          Vous avez déjà un compte ? <a href="./login.php" title="Se connecter" class="pseudo-blue">Se connecter</a>
+        <div class="already-signup">
+          <span>Vous avez déjà un compte ? </span>
+          <a href="./login.php" title="Se connecter" class="pseudo-blue">Se connecter</a>
         </div>
 
       </form>
