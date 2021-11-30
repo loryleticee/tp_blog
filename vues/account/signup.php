@@ -44,10 +44,10 @@
         <div>
           <input type="password" name="comfirm_password" id="comfirm_password" />
         </div>
-        <div>
+        <div class="categories__select">
           <label for="user_type">Choissisez votre catégorie </label>
         </div>
-        <div class>
+        <div>
           <select name="user_type" id="user_type">
             <optgroup label="Administrateurs">
               <option value="Admin">Admin</option>
