@@ -2,8 +2,8 @@
 $username = "root";
 $password = "root"; 
 $host = "localhost"; //localhost 
-$db = "blog";
-$port = "8889";
+$db = "blog2";
+$port = "8889"; //remplacez par 3306
 
 $option = [
     \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC,
