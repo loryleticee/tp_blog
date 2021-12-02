@@ -15,7 +15,7 @@ if($_SERVER['REQUEST_METHOD'] !== "POST") {
 $aReponse = [];
 
 $isFormData = stripos($contentType, "form-data");
-if ($contentType === "application/json" || $isFormData) {
+if (in_array($contentType, $aACCEPTED_FORM_DATA) || $isFormData) {
     if (!isset(
         $_POST['user_id'],
         $_POST['title'],

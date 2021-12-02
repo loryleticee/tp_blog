@@ -12,7 +12,7 @@ if($_SERVER['REQUEST_METHOD'] !== "GET") {
 
 $aReponse = [];
 
-if ($contentType === "application/json") {
+if (in_array($contentType, $aACCEPTED_FORM_DATA )) {
     $aReponse = getCategories();
 } else {
     $error['message'] = "Mauvais type de corps de page, form-data est interdit ici";

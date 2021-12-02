@@ -5,3 +5,8 @@ $error = [
     "message" => "",
     "exist" => false
 ];
+
+$aACCEPTED_FORM_DATA = [
+    "application/json",
+    "",
+];
