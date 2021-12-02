@@ -4,7 +4,6 @@ require_once("../config/config.php");
 
 function checkSignUp($pseudo, $email, $password, $comfirm_password, $user_type, $accepted)
 {
-
     global $error;
     $pseudo =  htmlspecialchars(strip_tags($pseudo));
     $email =  htmlspecialchars(strip_tags($email));

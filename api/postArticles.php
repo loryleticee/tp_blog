@@ -13,7 +13,6 @@ if($_SERVER['REQUEST_METHOD'] !== "POST") {
 }
 
 $aReponse = [];
-
 $isFormData = stripos($contentType, "form-data");
 if (in_array($contentType, $aACCEPTED_FORM_DATA) || $isFormData) {
     if (!isset(

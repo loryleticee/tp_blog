@@ -1,8 +1,8 @@
 <?php
 require_once '../config/mysql.php';
 require_once '../config/config.php';
-$contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
 
+$contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
 
 if($_SERVER['REQUEST_METHOD'] !== "GET") {
     $error['message'] = "cannot ".$_SERVER['REQUEST_METHOD']." /  method not allowed";
@@ -11,7 +11,6 @@ if($_SERVER['REQUEST_METHOD'] !== "GET") {
 }
 
 $aReponse = [];
-
 if (in_array($contentType, $aACCEPTED_FORM_DATA )) {
     $aReponse = getArticles();
 } else {
