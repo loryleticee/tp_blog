@@ -7,7 +7,10 @@ $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) 
 if($_SERVER['REQUEST_METHOD'] !== "GET") {
     $error['message'] = "cannot ".$_SERVER['REQUEST_METHOD']." /  method not allowed";
     $error['exist'] = true;
+    
     print(json_encode($error));
+    die;
+
 }
 
 $aReponse = [];
