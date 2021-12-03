@@ -1,13 +1,16 @@
 <?php
 session_start();
 require_once("../../config/mysql.php");
-require_once('../../config/config.php');
+require_once('../../helpers/RedirectHelper.php');
 require_once('../../helpers/ArticlesHelper.php');
-require_once('../../helpers/CategoriesHelper.php');
 
-$aCategories = getCategories();
-$aArticles = getArticles();
+if (empty($_GET['id'])) {
+    redirect("/vues/articles/articles.php");
+}
 
+
+$article_id = htmlspecialchars(strip_tags($_GET['id']));
+$aArticle = getArticle($article_id);
 ?>
 <!DOCTYPE html>
 <html>
@@ -21,33 +24,52 @@ $aArticles = getArticles();
 <body>
     <div id="page">
         <?php include_once('../templates/header.php'); ?>
-        <main id="main">
-            <aside id="categorie-aside">
-                <?php
-                foreach ($aCategories as $cat) : ?>
-                    <div>
-                        <span><?= $cat['label'] ?></span>
-                    </div>
-                <?php endforeach ?>
-            </aside>
+        <main class="main-center">
             <?php
-            if (isset($aArticles['exist'])) {
-                echo $aArticles['message'];
-            } else { ?>
-                <div class="container-article">
-                    <?php
-                    foreach ($aArticles as $key => $array_element) {
-                        echo '<div class="article-title"><a href="/controller/ArticleController.php?action=show&id=' . $array_element['id'] . '">' . $array_element["title"] . '</a></div>';
-                    }
-                    ?>
+            if (isset($aArticle['exist'])) {
+                echo $aArticle['message'];
+            } else {
+            ?>
+                <div class="flex-container">
+                    <div class="container-article">
+                        <div class="article-title">
+                            <span><strong><?= $aArticle["title"] ?></strong></span>
+                        </div>
+                        <div class="article-content">
+                            <?= $aArticle["content"] ?>
+                        </div>
+                        <div class="article__author">
+                            <span><i class="fas fa-user-ninja"></i> &nbsp;&nbsp; Rédigé par <?= $aArticle['pseudo'] ?></span>
+                        </div>
+                        <div class="article__action">
+                            <?php
+                            if (!empty($_SESSION['id'])) :
+                                if ($_SESSION['id'] === $aArticle['user_id']) :
+                            ?>
+                                    <span class="action-button" title="modifier l'article"><a href=<?= '/controller/ArticleController.php?action=modify&id=' . $aArticle['id'] ?>><i class="far fa-edit"></i></a></span>
+                                    <span class="action-button" title="Supprimer l'article" onclick="_delete()"><i class="fas fa-trash-alt"></i></span>
+                            <?php
+                                endif;
+                            endif;
+                            ?>
+                        </div>
+                    </div>
                 </div>
-            <?php } ?>
+            <?php
+            }
+            ?>
         </main>
-        <div>
-            <?php include_once('../templates/footer.php'); ?>
-        </div>
+        <?php include_once('../templates/footer.php'); ?>
     </div>
 </body>
 
+<script>
+    function _delete() {
+        article_id = <?php print($aArticle['id']) ?>;
+        if (confirm('Etes vous sur de vouloir supprimer cet article ? ')) {
+            window.location.href = '/controller/ArticleController.php?action=delete&id='+article_id;
+        }
+    }
+</script>
 
 </html>

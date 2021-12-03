@@ -96,6 +96,12 @@ F2F4FF
   justify-content: center;
   margin: 1rem;
 }
+
+.container-article  a{
+  color: #38302e;
+  text-decoration: none;
+}
+
 #error {
   color: red;
 }
