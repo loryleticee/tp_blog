@@ -95,6 +95,17 @@ function insertArticle($user_id, $title, $content, $categorie) : array
     $iArticleID = getLastUserArticle($user_id);
     $error["article_id"] = $iArticleID;
 
+    try {
+        $query = $connexion->prepare("INSERT INTO `categorie_article` (`categorie_id`, `article_id`) VALUES (:categorie_id, :article_id)");
+        $response = $query->execute(['categorie_id' => $categorie, 'article_id' => $iArticleID]);
+    } catch ( \PDOException $err) {
+        $error_msg = $err->getMessage();
+        $error["message"] .= $error_msg;
+        $error["exist"] = true;
+
+        return $error;
+    }
+
     return $error;
 }
 

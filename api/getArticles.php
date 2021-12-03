@@ -53,7 +53,41 @@ function getArticles(): array
         return $error;
     }
 
+    $aDatas = getCategoriesArticles($aDatas);
+
     return $aDatas;
+}
+
+
+function getCategoriesArticles($aDatas): array {
+    global $connexion;
+    global $error;
+
+    foreach ($aDatas as $value) {
+        try {
+            $query = $connexion->prepare("SELECT categorie_id FROM `categorie_article` WHERE article_id = :article_id");
+            $response = $query->execute(['article_id' => $value['id']]);
+        } catch (\PDOException $err) {
+            $error_msg = $err->getMessage();
+            $error["message"] .= $error_msg;
+            $error["exist"] = true;
+    
+            return $error;
+        }
+
+        if (!$response) {
+            $error["message"] .= "Une erreur s'est produite durant la recuperation des categorie d'article'";
+            $error["exist"] = true;
+            return $error;
+        }
+    
+        $aCategoriesIDS = $query->fetchAll();
+
+        $value["categories"] = $aCategoriesIDS;
+       
+    }
+
+    return $aCategoriesIDS;
 }
 
 
