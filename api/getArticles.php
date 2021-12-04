@@ -62,7 +62,7 @@ function getArticles(): array
 function getCategoriesArticles($aDatas): array {
     global $connexion;
     global $error;
-
+    $aDatasWithCats = [];
     foreach ($aDatas as $value) {
         try {
             $query = $connexion->prepare("SELECT categorie_id FROM `categorie_article` WHERE article_id = :article_id");
@@ -84,10 +84,11 @@ function getCategoriesArticles($aDatas): array {
         $aCategoriesIDS = $query->fetchAll();
 
         $value["categories"] = $aCategoriesIDS;
+        $aDatasWithCats[] = $value;
        
     }
 
-    return $aCategoriesIDS;
+    return $aDatasWithCats;
 }
 
 
