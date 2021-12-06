@@ -19,6 +19,7 @@ if (in_array($contentType, $aACCEPTED_FORM_DATA )) {
     $error['message'] = "Mauvais type de corps de page, form-data est interdit ici";
     $error['exist'] = true;
     print(json_encode($error));
+    die;
 }
 
 print(json_encode($aReponse));
