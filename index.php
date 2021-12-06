@@ -73,6 +73,17 @@ $routes = [
                 "on_failure" => "Object with a key (string) 'message' and a key (bool) 'exist' ",
             ]
         ],
+        "/api/getUser.php" => [
+            "METHOD" => "GET",
+            "description" => "GET AN USER BY HIS ID",
+            "required params" => [
+                'id' => "Identifiant de l'utilisateur"
+            ],
+            "return" => [
+                "on_success" => "array of user datas",
+                "on_failure" => "Object with a key (string) 'message' and a key (bool) 'exist' ",
+            ]
+        ],
     ]
 ];
 
