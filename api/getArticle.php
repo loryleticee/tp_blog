@@ -47,7 +47,7 @@ function getArticle($iArticle): array
 
     try {
         $query = $connexion->prepare(
-            "SELECT `article`.*, `user`.`pseudo`, `user`.`id`
+            "SELECT `article`.*, `user`.`pseudo`, `user`.`id` as `u_id`
             FROM `article` 
             INNER JOIN `user` 
             ON `user`.`id` = `article`.`user_id`  
