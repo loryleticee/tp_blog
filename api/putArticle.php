@@ -18,8 +18,9 @@ $isFormData = stripos($contentType, "form-data");
 if (in_array($contentType, $aACCEPTED_FORM_DATA) || $isFormData) {
     $inputJSON = file_get_contents('php://input');
     $input = json_decode($inputJSON, TRUE);
-    
-    if(!isset($input['user_id'])) {
+
+    $_i = empty($input) ? "_POST" : "input";
+    if(!isset($$_i['user_id'])) {
         $error["message"] = "Le paramètre user_id est manquant, veuillez l\'envoyer dans votre requete";
         $error["exist"] = true;
 
@@ -27,14 +28,14 @@ if (in_array($contentType, $aACCEPTED_FORM_DATA) || $isFormData) {
         die;
     }
 
-    if (!isset($input['article_id'], $input['user_id'] )) {
+    if (!isset($$_i['article_id'], $$_i['user_id'] )) {
         $error["message"] = "Un paramètre est manquant, veuillez remplir tous les champs";
         $error["exist"] = true;
 
         print(json_encode($error));
         die;
     }
-    $aReponse = modifyArticle($input['article_id'], $input['title'], $input['content'], $input['user_id']);
+    $aReponse = modifyArticle($$_i['article_id'], $$_i['title'], $$_i['content'], $$_i['user_id']);
 }
 
 print(json_encode($aReponse));
