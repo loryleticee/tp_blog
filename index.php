@@ -14,6 +14,17 @@ $routes = [
                 "on_failure" => "Object with a key (string) 'message' and a key (bool) 'exist' ",
             ]
         ],
+        "/api/getArticle.php" => [
+            "METHOD" => "GET",
+            "description" => "GET AN ARTICLE",
+            "required params" => [
+                "id" => "l'identifiant de l'artile"
+            ],
+            "return" => [
+                "on_success" => "array of object datas",
+                "on_failure" => "Object with a key (string) 'message' and a key (bool) 'exist' ",
+            ]
+        ],
         "/api/postArticle.php" => [
             "METHOD" => "POST",
             "description" => "ADD AN ARTICLE",
