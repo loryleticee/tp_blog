@@ -18,6 +18,7 @@ if (in_array($contentType, $aACCEPTED_FORM_DATA )) {
         $error['message'] = "Aucun article n’a été ciblé, veuillez passer en paramètre un id d'article";
         $error['exist'] = true;
         print(json_encode($error));
+        die;
     } 
 
     $aReponse = getArticle($_GET["id"]);
@@ -25,6 +26,7 @@ if (in_array($contentType, $aACCEPTED_FORM_DATA )) {
     $error['message'] = "Mauvais type de corps de page, form-data est interdit ici";
     $error['exist'] = true;
     print(json_encode($error));
+    die;
 }
 
 print(json_encode($aReponse));
@@ -40,6 +42,7 @@ function getArticle($iArticle): array
         $error['message'] = "Aucun article n’a été ciblé, veuillez passer en paramètre un id d'article";
         $error['exist'] = true;
         print(json_encode($error));
+        die;
     } 
 
     try {
