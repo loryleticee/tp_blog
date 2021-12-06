@@ -46,7 +46,12 @@ function getArticle($iArticle): array
     } 
 
     try {
-        $query = $connexion->prepare("SELECT * FROM `article` WHERE is_deleted=0 AND id=:id");
+        $query = $connexion->prepare(
+            "SELECT `article`.*, `user`.`pseudo`, `user`.`id`
+            FROM `article` 
+            INNER JOIN `user` 
+            ON `user`.`id` = `article`.`user_id`  
+            WHERE `article`.`is_deleted`=0 AND `article`.`id`=:id");
         $response = $query->execute(["id" => $iArticle]);
     } catch (\PDOException $err) {
         $error_msg = $err->getMessage();
