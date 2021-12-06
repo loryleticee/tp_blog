@@ -29,7 +29,7 @@ if (in_array($contentType, $aACCEPTED_FORM_DATA) || $isFormData) {
         die;
     }
 
-    if (!isset($$_i['article_id'], $$_i['user_id'])) {
+    if (empty($$_i['article_id']) || empty($$_i['user_id'])) {
         $error["message"] = "Un paramètre est manquant, veuillez remplir tous les champs";
         $error["exist"] = true;
 
@@ -44,8 +44,6 @@ if (in_array($contentType, $aACCEPTED_FORM_DATA) || $isFormData) {
 
     $aReponse = modifyArticle($aArgs);
 }
-
-print(json_encode($aReponse));
 
 function filter_array( string $a) : string
 {
@@ -62,18 +60,29 @@ function modifyArticle(array $aArgs): array
 {
     global $connexion;
     global $error;
+    
     $re = array_filter(array_map("filter_array", $aArgs), "filter_array_empty");
     $q = "UPDATE `article` SET ";
     $r = array_filter(array_keys($re), function ($e) {
         return $e !== "user_id" && $e !== "article_id";
     });
     $i = 0;
+
     foreach ($r as $v) {
         $q .= "`$v` = :$v " . (count($r) - 1 > $i ? "," : "");
         $i++;
     }
+    
     $q .= "WHERE `user_id` = :user_id AND `id`= :article_id";
 
+    if (empty($re['article_id']) || empty($re['user_id'])) {
+        $error["message"] = "Un paramètre est manquant, veuillez remplir tous les champs";
+        $error["exist"] = true;
+
+        print(json_encode($error));
+        die;
+    }
+    
     try {
         $query = $connexion->prepare($q);
         $response = $query->execute($re);
@@ -82,17 +91,19 @@ function modifyArticle(array $aArgs): array
         $error_msg = $err->getMessage();
         $error["message"] .= $error_msg;
         $error["exist"] = true;
-
+        
         return $error;
     }
-
+    
     if (!$response) {
         $error["message"] .= "Une erreur s'est produite durant la mofication de l'article'";
         $error["exist"] = true;
         return $error;
     }
-
+    
     $error["message"] = 'Modification effectué';
-
+    
     return $error;
 }
+
+print(json_encode($aReponse));
