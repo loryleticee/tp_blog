@@ -27,7 +27,7 @@ if (in_array($contentType, $aACCEPTED_FORM_DATA) || $isFormData) {
         die;
     }
 
-    if (!isset($input['article_id'], $input['title'], $input['content'], $input['user_id'] )) {
+    if (!isset($input['article_id'], $input['user_id'] )) {
         $error["message"] = "Un paramètre est manquant, veuillez remplir tous les champs";
         $error["exist"] = true;
 
