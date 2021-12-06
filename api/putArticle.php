@@ -15,11 +15,12 @@ if($_SERVER['REQUEST_METHOD'] !== "POST") {
 
 $aReponse = [];
 $isFormData = stripos($contentType, "form-data");
+
 if (in_array($contentType, $aACCEPTED_FORM_DATA) || $isFormData) {
     $inputJSON = file_get_contents('php://input');
     $input = json_decode($inputJSON, TRUE);
-
     $_i = empty($input) ? "_POST" : "input";
+
     if(!isset($$_i['user_id'])) {
         $error["message"] = "Le paramètre user_id est manquant, veuillez l\'envoyer dans votre requete";
         $error["exist"] = true;
@@ -35,23 +36,39 @@ if (in_array($contentType, $aACCEPTED_FORM_DATA) || $isFormData) {
         print(json_encode($error));
         die;
     }
-    $aReponse = modifyArticle($$_i['article_id'], $$_i['title'], $$_i['content'], $$_i['user_id']);
+
+    $aArgs = array_flip(array_keys($$_i));
+    foreach($aArgs as $k => $v) {
+        $aArgs[$k] = $$_i[$k];
+    }
+
+    $aReponse = modifyArticle($aArgs);
+}
+function filter_array($a) {
+        $v = htmlspecialchars(strip_tags($a));
+        return $v;
+}
+function filter_array_empty($a) {
+        return empty($a) ? false : true;
 }
 
-print(json_encode($aReponse));
-
-function modifyArticle($article_id, $title, $content, $user_id) 
+function modifyArticle($aArgs)
 {
-    $user_id = htmlspecialchars(strip_tags($user_id));
-    $article_id = htmlspecialchars(strip_tags($article_id));
-    $title = htmlspecialchars(strip_tags($title));
-    $content = htmlspecialchars(strip_tags($content));
-    
     global $connexion;
     global $error;
+    $re = array_filter(array_map("filter_array", $aArgs), "filter_array_empty");
+    $q="UPDATE `article` SET ";
+    $r= array_filter(array_keys($re), function($e){ return $e !== "user_id" && $e !== "article_id"; });
+    $i = 0;
+    foreach($r as $v) {
+        $q.="`$v` = :$v ".(count($r)-1 > $i ? "," : "");
+        $i++;
+    }
+    $q.="WHERE `user_id` = :user_id AND `id`= :article_id";
+
     try {
-        $query = $connexion->prepare("UPDATE `article` SET `title` = :title , `content`= :content  WHERE `user_id` = :user_id AND `id`= :article_id ");
-        $response = $query->execute(['article_id' => $article_id, 'content' => $content, 'title' => $title, 'user_id' => $user_id]);
+        $query = $connexion->prepare($q);
+        $response = $query->execute($re);
     } catch ( \PDOException $err) {
         $error_code = $err->getCode();
         $error_msg = $err->getMessage();
