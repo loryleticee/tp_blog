@@ -1,9 +1,9 @@
 <?php
-$username = "106139_blog";
-$password = "vobfik-nyzPyv-0jyfra";
-$host = "mysql-pawolanmwen.alwaysdata.net"; //localhost 
-$db = "pawolanmwen_blog";
-$port = "3306";
+$username = "root";
+$password = "root"; 
+$host = "localhost"; //localhost 
+$db = "blog";
+$port = "8889";
 
 $option = [
     \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC,
