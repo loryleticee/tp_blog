@@ -53,6 +53,17 @@ $routes = [
                 "on_failure" => "Object with a key (string) 'message' and a key (bool) 'exist' ",
             ]
         ],
+        "/api/deleteArticle.php" => [
+            "METHOD" => "POST",
+            "description" => "DELETE AN ARTICLE",
+            "required params" => [
+                "categorie" => "L'identifiant de l'article",
+            ],
+            "return" => [
+                "on_success" => "Success message",
+                "on_failure" => "Error message",
+            ]
+        ],
         "/api/getCategories.php" => [
             "METHOD" => "GET",
             "description" => "GET ALL CATEGORIES",
@@ -71,6 +82,17 @@ $routes = [
             "return" => [
                 "on_success" => "array of object datas with the new categorie id",
                 "on_failure" => "Object with a key (string) 'message' and a key (bool) 'exist' ",
+            ]
+        ],
+        "/api/deleteCategorie.php" => [
+            "METHOD" => "POST",
+            "description" => "DELETED A CATEGORIE",
+            "required params" => [
+                "categorie_id" => "L'identifiant de la catégorie",
+            ],
+            "return" => [
+                "on_success" => "Success message",
+                "on_failure" => "Error message",
             ]
         ],
         "/api/getUser.php" => [
